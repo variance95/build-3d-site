@@ -152,8 +152,9 @@
     .collage img{cursor:zoom-in}
     .collage:hover .c1{transform:rotate(-8deg) translate(-4%,-2%)}
     .collage:hover .c2{transform:rotate(9deg) translate(4%,-2%)}
-    /* the lantern is a portrait video — show it whole inside its card (dark bars blend with the card's dark bg) instead of cover-cropping it to a zoomed sliver */
-    .collage video{object-fit:contain}
+    /* iOS ignores object-fit on inline autoplay video (renders a zoomed corner), so play the video on desktop and show the lit still on phones — both open the playing video in the lightbox */
+    .collage .still-only{display:none}
+    @media (max-width:760px){ .collage .vid-only{display:none!important} .collage .still-only{display:block} }
 
     /* 3D printing — rich green band so the photo cards pop */
     #printing{background:radial-gradient(900px 500px at 12% -5%,#2c6850 0,transparent 55%),linear-gradient(160deg,#1c4032,#11271e);color:#e7efe9}
@@ -310,7 +311,8 @@
         <div class="prow-media"><div class="collage port">
             <img class="c1" src="img/prints/lantern-1.jpg" alt="Lithophane lantern, unlit, in daylight">
             <img class="c2" src="img/prints/lantern-2.jpg" alt="Lithophane lantern from another angle">
-            <video class="c3" src="img/prints/lantern.mp4" poster="img/prints/lantern.jpg" autoplay loop muted playsinline preload="metadata" aria-label="Lithophane lantern, lit and glowing"></video>
+            <video class="c3 vid-only" src="img/prints/lantern.mp4" poster="img/prints/lantern.jpg" autoplay loop muted playsinline preload="metadata" aria-label="Lithophane lantern, lit and glowing"></video>
+            <img class="c3 still-only" src="img/prints/lantern.jpg" data-video="img/prints/lantern.mp4" alt="Lithophane lantern, lit and glowing">
         </div></div>
     </div>
     <div style="margin-top:42px;display:flex;gap:12px;flex-wrap:wrap;"><a href="/printing" class="btn btn-primary">See all 3D printing →</a><a href="/contact" class="btn btn-ghost">Discuss a print</a></div>
@@ -353,18 +355,24 @@
         prevBtn=lb.querySelector('.lb-prev'),nextBtn=lb.querySelector('.lb-next');
     var items=[],i=0;
     function show(){
-        var el=items[i];stage.innerHTML='';var n;
-        if(el.tagName==='VIDEO'){n=document.createElement('video');n.src=el.currentSrc||el.src;n.controls=true;n.autoplay=true;n.loop=true;n.muted=true;n.playsInline=true;}
+        var el=items[i];stage.innerHTML='';
+        var vsrc=el.tagName==='VIDEO'?(el.currentSrc||el.src):el.getAttribute('data-video');
+        var n;
+        if(vsrc){n=document.createElement('video');n.src=vsrc;n.controls=true;n.autoplay=true;n.loop=true;n.muted=true;n.playsInline=true;}
         else{n=document.createElement('img');n.src=el.currentSrc||el.src;n.alt=el.alt||'';}
         stage.appendChild(n);
     }
     function open(list,idx){items=list;i=idx;lb.classList.toggle('single',list.length<2);lb.classList.add('open');document.body.style.overflow='hidden';show();}
     function close(){lb.classList.remove('open');document.body.style.overflow='';stage.innerHTML='';}
     function go(d){i=(i+d+items.length)%items.length;show();}
-    // group media by their container so you only page through related items
+    // group media by their container; page only through the currently-visible ones
     document.querySelectorAll('.collage, .hmock, .show-img').forEach(function(c){
-        var list=Array.prototype.slice.call(c.querySelectorAll('img,video'));if(!list.length)return;
-        list.forEach(function(el,idx){el.style.cursor='zoom-in';el.addEventListener('click',function(ev){ev.preventDefault();open(list,idx);});});
+        var all=Array.prototype.slice.call(c.querySelectorAll('img,video'));if(!all.length)return;
+        all.forEach(function(el){el.style.cursor='zoom-in';el.addEventListener('click',function(ev){
+            ev.preventDefault();
+            var list=all.filter(function(m){return m.offsetParent!==null;});
+            open(list,list.indexOf(el));
+        });});
     });
     prevBtn.addEventListener('click',function(e){e.stopPropagation();go(-1);});
     nextBtn.addEventListener('click',function(e){e.stopPropagation();go(1);});
