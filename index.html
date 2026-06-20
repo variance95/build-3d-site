@@ -101,6 +101,9 @@
     .btn-primary:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(225,115,59,0.4); }
     .btn-ghost { background:rgba(255,255,255,0.10); color:#fff; border:1px solid rgba(255,255,255,0.25); }
     .btn-ghost:hover { background:rgba(255,255,255,0.18); }
+    .btn-etsy { background:#e8581c; color:#fff; box-shadow:0 4px 14px rgba(232,88,28,0.32); display:inline-flex; align-items:center; gap:9px; }
+    .btn-etsy:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(232,88,28,0.42); }
+    .btn-etsy svg { width:17px; height:17px; stroke:#fff; fill:none; stroke-width:2; }
 
     .sec-head { display:flex; align-items:center; gap:16px; margin-bottom:14px; }
     .sec-head h2 { font-size:clamp(1.6rem,3.5vw,2.1rem); font-weight:600; }
@@ -325,7 +328,7 @@
             <img class="c3" src="img/prints/lantern.webp" alt="Lithophane lantern, lit and glowing">
         </div></div>
     </div>
-    <div style="margin-top:42px;display:flex;gap:12px;flex-wrap:wrap;"><a href="/printing" class="btn btn-primary">See all 3D printing →</a><a href="/contact" class="btn btn-ghost">Discuss a print</a></div>
+    <div style="margin-top:42px;display:flex;gap:12px;flex-wrap:wrap;"><a href="/printing" class="btn btn-primary">See all 3D printing →</a><a href="https://www.etsy.com/uk/shop/Build3DStore" class="btn btn-etsy" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg> Shop on Etsy</a><a href="/contact" class="btn btn-ghost">Discuss a print</a></div>
 </div></section>
 
 <!-- CONTACT -->
@@ -349,7 +352,7 @@
     <img src="img/logo-dark-160.png" alt="Build-3D" style="height:46px;width:auto;margin:0 auto 14px;display:block;opacity:.85;">
     <div style="font-family:'Lora',serif;font-style:italic;color:var(--green-600);margin-bottom:8px;">Bespoke Creativity</div>
     © <span id="yr"></span> Build-3D · Bespoke software &amp; 3D printing<br>
-    <a href="mailto:james@build-3d.com">james@build-3d.com</a>
+    <a href="mailto:james@build-3d.com">james@build-3d.com</a> · <a href="https://www.etsy.com/uk/shop/Build3DStore" target="_blank" rel="noopener">Etsy shop</a>
 </footer>
 <script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
 
