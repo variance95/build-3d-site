@@ -152,9 +152,11 @@
     .collage img{cursor:zoom-in}
     .collage:hover .c1{transform:rotate(-8deg) translate(-4%,-2%)}
     .collage:hover .c2{transform:rotate(9deg) translate(4%,-2%)}
-    /* iOS ignores object-fit on inline autoplay video (renders a zoomed corner), so play the video on desktop and show the lit still on phones — both open the playing video in the lightbox */
-    .collage .still-only{display:none}
-    @media (max-width:760px){ .collage .vid-only{display:none!important} .collage .still-only{display:block} }
+    /* lantern card: wrap the video and size it with max-width/height instead of object-fit
+       (iOS ignores object-fit on inline autoplay video and zooms into a corner) — this plays
+       the looping video AND shows it whole on every device */
+    .collage .vidcard{display:flex;align-items:center;justify-content:center;overflow:hidden;background:#0d1f18}
+    .collage .vidcard video{max-width:100%;max-height:100%;display:block}
 
     /* 3D printing — rich green band so the photo cards pop */
     #printing{background:radial-gradient(900px 500px at 12% -5%,#2c6850 0,transparent 55%),linear-gradient(160deg,#1c4032,#11271e);color:#e7efe9}
@@ -295,9 +297,9 @@
     <div class="prow">
         <div class="prow-text"><h3>Halo reader holder</h3><p>A purpose-made holder for the Halo microchip reader — keeps it secure, charged and to hand where staff need it, instead of going missing in a drawer. Printable plain or branded to your organisation, both shown.</p></div>
         <div class="prow-media"><div class="collage land">
-            <img class="c1" src="img/prints/halo-3.jpg" alt="Green Halo holder with the reader docked">
+            <img class="c1" src="img/prints/halo-1.jpg" alt="3D-printed Halo microchip reader holder, branded, with the reader docked">
             <img class="c2" src="img/prints/halo-2.jpg" alt="Halo holder with the reader in place">
-            <img class="c3" src="img/prints/halo-1.jpg" alt="3D-printed Halo microchip reader holder, branded, with the reader docked">
+            <img class="c3" src="img/prints/halo-3.jpg" alt="Green Halo holder with the reader docked">
         </div></div>
     </div>
     <div class="squiggle" aria-hidden="true"><svg viewBox="0 0 1200 56"><path d="M2 28 C 140 4 230 4 340 27 C 450 50 560 51 670 28 C 770 7 870 6 980 28 C 1080 48 1130 47 1198 29"/></svg></div>
@@ -311,8 +313,7 @@
         <div class="prow-media"><div class="collage port">
             <img class="c1" src="img/prints/lantern-1.jpg" alt="Lithophane lantern, unlit, in daylight">
             <img class="c2" src="img/prints/lantern-2.jpg" alt="Lithophane lantern from another angle">
-            <video class="c3 vid-only" src="img/prints/lantern.mp4" poster="img/prints/lantern.jpg" autoplay loop muted playsinline preload="metadata" aria-label="Lithophane lantern, lit and glowing"></video>
-            <img class="c3 still-only" src="img/prints/lantern.jpg" data-video="img/prints/lantern.mp4" alt="Lithophane lantern, lit and glowing">
+            <div class="c3 vidcard"><video src="img/prints/lantern.mp4" poster="img/prints/lantern.jpg" autoplay loop muted playsinline preload="metadata" aria-label="Lithophane lantern, lit and glowing"></video></div>
         </div></div>
     </div>
     <div style="margin-top:42px;display:flex;gap:12px;flex-wrap:wrap;"><a href="/printing" class="btn btn-primary">See all 3D printing →</a><a href="/contact" class="btn btn-ghost">Discuss a print</a></div>

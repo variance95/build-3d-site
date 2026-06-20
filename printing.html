@@ -76,9 +76,9 @@
     .collage img{cursor:zoom-in}
     .collage:hover .c1{transform:rotate(-8deg) translate(-4%,-2%)}
     .collage:hover .c2{transform:rotate(9deg) translate(4%,-2%)}
-    /* iOS ignores object-fit on inline autoplay video (renders a zoomed corner), so play the video on desktop and show the lit still on phones — both open the playing video in the lightbox */
-    .collage .still-only{display:none}
-    @media (max-width:780px){ .collage .vid-only{display:none!important} .collage .still-only{display:block} }
+    /* lantern card: wrap the video and size with max-width/height instead of object-fit (iOS ignores object-fit on inline autoplay video) so it plays AND shows whole on every device */
+    .collage .vidcard{display:flex;align-items:center;justify-content:center;overflow:hidden;background:#0d1f18}
+    .collage .vidcard video{max-width:100%;max-height:100%;display:block}
     .ph{position:relative;width:100%;max-width:380px;margin:0 auto;aspect-ratio:4/3;border-radius:14px;background:linear-gradient(150deg,var(--sage-card),#fff);border:1px dashed var(--sage-line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--muted);font-size:.9rem;font-weight:600;text-align:center;padding:18px}
     .ph svg{width:40px;height:40px;stroke:var(--green-500);fill:none;stroke-width:1.5}
 
@@ -144,9 +144,9 @@
             </div>
         </div>
         <div class="prow-media"><div class="collage land">
-            <img class="c1" src="img/prints/halo-3.jpg" alt="Green Halo holder with the reader docked">
+            <img class="c1" src="img/prints/halo-1.jpg" alt="Halo reader holder, branded, with the reader docked">
             <img class="c2" src="img/prints/halo-2.jpg" alt="Halo holder with the reader in place">
-            <img class="c3" src="img/prints/halo-1.jpg" alt="Halo reader holder, branded, with the reader docked">
+            <img class="c3" src="img/prints/halo-3.jpg" alt="Green Halo holder with the reader docked">
         </div></div>
     </div>
 
@@ -182,8 +182,7 @@
         <div class="prow-media"><div class="collage port">
             <img class="c1" src="img/prints/lantern-1.jpg" alt="Lithophane lantern, unlit, in daylight">
             <img class="c2" src="img/prints/lantern-2.jpg" alt="Lithophane lantern from another angle">
-            <video class="c3 vid-only" src="img/prints/lantern.mp4" poster="img/prints/lantern.jpg" autoplay loop muted playsinline preload="metadata" aria-label="Lithophane lantern, lit and glowing"></video>
-            <img class="c3 still-only" src="img/prints/lantern.jpg" data-video="img/prints/lantern.mp4" alt="Lithophane lantern, lit and glowing">
+            <div class="c3 vidcard"><video src="img/prints/lantern.mp4" poster="img/prints/lantern.jpg" autoplay loop muted playsinline preload="metadata" aria-label="Lithophane lantern, lit and glowing"></video></div>
         </div></div>
     </div>
 </div></section>
