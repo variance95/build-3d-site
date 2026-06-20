@@ -26,7 +26,13 @@
     .nav .brand img{height:56px;width:auto;display:block}
     .nav .links a{color:#cfe0d5;text-decoration:none;margin-left:22px;font-size:.92rem;font-weight:500}
     .nav .links a:hover,.nav .links a.active{color:#fff}
-    @media (max-width:560px){.nav .links a:not(.active){display:none}}
+    @media (max-width:560px){
+        .nav .wrap{flex-wrap:wrap;justify-content:center;gap:6px;padding:10px 16px}
+        .nav .brand img{height:48px}
+        .nav .links{order:3;width:100%;display:flex;justify-content:center;flex-wrap:wrap;gap:8px}
+        .nav .links a{margin-left:0;padding:6px 12px;border-radius:8px}
+        .nav .links a:hover,.nav .links a.active{background:rgba(255,255,255,.08)}
+    }
     /* hero */
     .head{background:radial-gradient(900px 400px at 80% -20%,#2c6850 0,transparent 60%),linear-gradient(160deg,#1d4234,#16352a);color:#eaf2ec;padding:56px 0 44px;text-align:center}
     .head h1{font-size:clamp(2.2rem,5vw,3.2rem);font-weight:700}
