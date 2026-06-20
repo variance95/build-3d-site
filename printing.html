@@ -76,9 +76,9 @@
     .collage img{cursor:zoom-in}
     .collage:hover .c1{transform:rotate(-8deg) translate(-4%,-2%)}
     .collage:hover .c2{transform:rotate(9deg) translate(4%,-2%)}
-    /* lantern card: wrap the video and size with max-width/height instead of object-fit (iOS ignores object-fit on inline autoplay video) so it plays AND shows whole on every device */
-    .collage .vidcard{display:flex;align-items:center;justify-content:center;overflow:hidden;background:#0d1f18}
-    .collage .vidcard video{max-width:100%;max-height:100%;display:block}
+    /* lantern card: give the card the SAME aspect-ratio as the video (640x1040) so the video fills it exactly — no cropping, so iOS ignoring object-fit no longer matters, and the poster shows even if autoplay is blocked */
+    .collage .vidcard{overflow:hidden;background:#0d1f18;aspect-ratio:640/1040}
+    .collage .vidcard video{width:100%;height:100%;object-fit:cover;display:block}
     .ph{position:relative;width:100%;max-width:380px;margin:0 auto;aspect-ratio:4/3;border-radius:14px;background:linear-gradient(150deg,var(--sage-card),#fff);border:1px dashed var(--sage-line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--muted);font-size:.9rem;font-weight:600;text-align:center;padding:18px}
     .ph svg{width:40px;height:40px;stroke:var(--green-500);fill:none;stroke-width:1.5}
 
