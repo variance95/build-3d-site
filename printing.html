@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3D Printing — Build-3D</title>
+<meta name="description" content="Bespoke 3D printing by Build-3D — practical kit for rescues, replacement parts and creative one-offs. Made to order, with select pieces on Etsy.">
+<meta property="og:title" content="3D Printing — Build-3D">
+<meta property="og:description" content="Bespoke 3D printing — practical kit, replacement parts and creative one-offs, made to order.">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/png" href="img/favicon-64.png">
+<link rel="apple-touch-icon" href="img/logo-160.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Lora:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+    :root{--green-900:#16352a;--green-800:#1d4234;--green-700:#245140;--green-600:#2f6b53;--green-500:#3a8266;
+        --sage-bg:#f5f8f3;--sage-card:#eef3ea;--sage-line:#dde6d8;--ink:#1c2b25;--muted:#5a6b62;--white:#fff;--rim:#e4e9e0;--orange:#e1733b;--etsy:#e8581c;}
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(--sage-bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+    h1,h2,h3,.serif{font-family:'Lora',Georgia,serif}
+    .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+    a{color:inherit}
+    /* nav */
+    .nav{position:sticky;top:0;z-index:50;background:rgba(22,53,42,.96);backdrop-filter:blur(8px)}
+    .nav .wrap{display:flex;justify-content:space-between;align-items:center;padding:12px 24px}
+    .nav .brand{display:flex;align-items:center;text-decoration:none}
+    .nav .brand img{height:56px;width:auto;display:block}
+    .nav .links a{color:#cfe0d5;text-decoration:none;margin-left:22px;font-size:.92rem;font-weight:500}
+    .nav .links a:hover,.nav .links a.active{color:#fff}
+    @media (max-width:560px){.nav .links a:not(.active){display:none}}
+    /* hero */
+    .head{position:relative;overflow:hidden;background:radial-gradient(900px 460px at 80% -20%,#2c6850 0,transparent 60%),linear-gradient(160deg,#1d4234,#11271e);color:#eaf2ec;padding:64px 0 56px}
+    .head .eyebrow{letter-spacing:.18em;text-transform:uppercase;font-size:.72rem;font-weight:600;color:#9fc4b1;margin-bottom:16px}
+    .head h1{font-size:clamp(2.4rem,6vw,3.6rem);font-weight:700;line-height:1}
+    .head p{color:#cfe0d5;max-width:600px;margin:18px 0 0;font-size:1.08rem}
+    .head .cta{margin-top:28px}
+    .btn{display:inline-block;padding:13px 26px;border-radius:11px;font-weight:600;font-size:.96rem;text-decoration:none;transition:transform .14s,box-shadow .14s;border:none;cursor:pointer}
+    .btn-primary{background:var(--orange);color:#fff;box-shadow:0 6px 18px rgba(225,115,59,.34)}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(225,115,59,.44)}
+    .btn-etsy{background:var(--etsy);color:#fff;box-shadow:0 6px 18px rgba(232,88,28,.3);display:inline-flex;align-items:center;gap:9px}
+    .btn-etsy:hover{transform:translateY(-2px)}
+    .btn-etsy svg{width:17px;height:17px;stroke:#fff;fill:none;stroke-width:2}
+    .etsy-soon{display:inline-flex;align-items:center;gap:9px;color:var(--muted);font-size:.9rem;font-weight:600;border:1px dashed var(--sage-line);border-radius:10px;padding:11px 16px}
+    .etsy-soon svg{width:16px;height:16px;stroke:var(--etsy);fill:none;stroke-width:2}
+
+    section{padding:64px 0}
+    .intro{max-width:720px}
+    .intro p{font-size:1.1rem;color:#3a4b42}
+    .intro p+p{margin-top:14px}
+
+    /* product rows */
+    .prow{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-top:18px}
+    .squiggle{margin:48px 0;line-height:0}
+    .squiggle+.prow{margin-top:0}
+    .squiggle svg{width:100%;height:auto;display:block;overflow:visible}
+    .squiggle path{stroke:var(--green-500);stroke-width:2.5;fill:none;stroke-linecap:round;opacity:.55}
+    .prow.rev .prow-media{order:-1}
+    @media (max-width:780px){.prow{grid-template-columns:1fr;gap:26px}.prow.rev .prow-media{order:0}}
+    .prow-text .tag{display:inline-block;background:var(--sage-card);color:var(--green-600);font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;border-radius:20px;margin-bottom:14px}
+    .prow-text h2{font-size:clamp(1.5rem,3vw,2rem);font-weight:600}
+    .prow-text p{color:var(--muted);margin-top:12px}
+    .prow-text .actions{margin-top:22px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+
+    /* scattered collage */
+    .collage{position:relative;width:100%;max-width:460px;margin:0 auto}
+    .collage.land{aspect-ratio:7/5}
+    .collage.port{aspect-ratio:5/6}
+    .collage>*{position:absolute;border:5px solid #fff;border-radius:10px;box-shadow:0 16px 34px rgba(18,48,37,.22);object-fit:cover;display:block;background:#0d1f18;transition:transform .25s ease}
+    .collage.land>*{width:60%;aspect-ratio:4/3}
+    .collage.port>*{width:56%;aspect-ratio:3/4}
+    .collage .c1{top:2%;left:0;transform:rotate(-6deg);z-index:1}
+    .collage .c2{top:0;right:0;transform:rotate(7deg);z-index:2}
+    .collage .c3{bottom:0;left:19%;transform:rotate(-3deg);z-index:3}
+    .collage img{cursor:zoom-in}
+    .collage:hover .c1{transform:rotate(-8deg) translate(-4%,-2%)}
+    .collage:hover .c2{transform:rotate(9deg) translate(4%,-2%)}
+    .ph{position:relative;width:100%;max-width:380px;margin:0 auto;aspect-ratio:4/3;border-radius:14px;background:linear-gradient(150deg,var(--sage-card),#fff);border:1px dashed var(--sage-line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--muted);font-size:.9rem;font-weight:600;text-align:center;padding:18px}
+    .ph svg{width:40px;height:40px;stroke:var(--green-500);fill:none;stroke-width:1.5}
+
+    /* commission + etsy callouts */
+    .band{background:radial-gradient(800px 420px at 15% 0,#2c6850 0,transparent 60%),linear-gradient(160deg,#1c4032,#11271e);color:#e7efe9;border-radius:20px;padding:44px}
+    .band h2{color:#fff;font-size:1.7rem;margin-bottom:12px}
+    .band p{color:#bcd4c6;max-width:620px}
+    .band .actions{margin-top:24px;display:flex;gap:12px;flex-wrap:wrap}
+    .btn-ghost{background:rgba(255,255,255,.10);color:#fff;border:1px solid rgba(255,255,255,.28)}
+    .btn-ghost:hover{background:rgba(255,255,255,.18)}
+
+    footer{text-align:center;padding:44px 24px;color:var(--muted);font-size:.86rem;border-top:1px solid var(--sage-line)}
+    footer img{height:42px;width:auto;margin:0 auto 12px;opacity:.85}
+    footer a{color:var(--green-600);text-decoration:none}
+
+    /* lightbox */
+    .lightbox{position:fixed;inset:0;background:rgba(8,15,12,.93);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:24px;z-index:300;cursor:zoom-out;opacity:0;transition:opacity .2s}
+    .lightbox.open{display:flex;opacity:1}
+    .lightbox img{max-width:95vw;max-height:92vh;border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.6);cursor:default}
+    .lightbox .lb-close{position:absolute;top:16px;right:22px;width:44px;height:44px;border:none;background:rgba(255,255,255,.12);color:#fff;font-size:1.6rem;border-radius:50%;cursor:pointer;line-height:1}
+</style>
+</head>
+<body>
+
+<nav class="nav"><div class="wrap">
+    <a href="/" class="brand"><img src="img/logo-light-160.png" alt="Build-3D"></a>
+    <div class="links">
+        <a href="/#software">Software</a>
+        <a href="/printing" class="active">3D Printing</a>
+        <a href="/contact">Contact</a>
+    </div>
+</div></nav>
+
+<header class="head"><div class="wrap">
+    <div class="eyebrow">Build-3D — Bespoke Creativity</div>
+    <h1>3D printing, made to order</h1>
+    <p>Practical kit for rescues, replacement parts, and creative one-offs — designed and printed to fit the job. Bring a design, a sketch, or just the problem, and we'll help turn it into something you can hold.</p>
+    <div class="cta"><a href="/contact" class="btn btn-primary">Discuss a print →</a></div>
+</div></header>
+
+<section><div class="wrap">
+    <div class="intro">
+        <p>Everything here was designed in-house and printed to order. Some pieces are practical — made to solve a specific problem on the rescue floor — and some are just lovely things to have. A few are listed on <strong>Etsy</strong>; the rest we make on request.</p>
+    </div>
+
+    <!-- HALO -->
+    <div class="prow">
+        <div class="prow-text">
+            <span class="tag">For rescues &amp; vets</span>
+            <h2>Halo reader holder</h2>
+            <p>A purpose-made holder for the Halo microchip reader — it keeps the reader secure, charged and to hand where staff need it, instead of going missing in a drawer. Printable plain, or branded to your organisation (as shown).</p>
+            <div class="actions">
+                <!-- TODO: replace href with the Etsy listing URL, swap .etsy-soon for the .btn-etsy below -->
+                <span class="etsy-soon"><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg> Etsy listing coming soon</span>
+                <a href="/contact" class="btn btn-primary">Order one →</a>
+            </div>
+        </div>
+        <div class="prow-media"><div class="collage land">
+            <img class="c1" src="img/prints/halo-3.jpg" alt="Green Halo holder with the reader docked">
+            <img class="c2" src="img/prints/halo-2.jpg" alt="Halo holder with the reader in place">
+            <img class="c3" src="img/prints/halo-1.jpg" alt="Halo reader holder, branded, with the reader docked">
+        </div></div>
+    </div>
+
+    <div class="squiggle" aria-hidden="true"><svg viewBox="0 0 1200 56"><path d="M2 28 C 140 4 230 4 340 27 C 450 50 560 51 670 28 C 770 7 870 6 980 28 C 1080 48 1130 47 1198 29"/></svg></div>
+
+    <!-- NAME PLATE -->
+    <div class="prow rev">
+        <div class="prow-text">
+            <span class="tag">For rescues · works with RescueDB</span>
+            <h2>The Universal Name Plate</h2>
+            <p>A modular, cage-mounted holder for a printed 6×4″ card — the animal's name, photo, medical flags and care notes, at a glance on the front of every pen. It's built into RescueDB too: export any animal and out comes a print-ready 6×4 that slots straight in. They screw on, rearrangeable, and printed to fit your cages.</p>
+            <div class="actions">
+                <span class="etsy-soon"><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg> Etsy listing coming soon</span>
+                <a href="/contact" class="btn btn-primary">Enquire →</a>
+            </div>
+        </div>
+        <div class="prow-media"><div class="ph"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h5M6 14h8"/></svg><span>Photos coming soon</span></div></div>
+    </div>
+
+    <div class="squiggle" aria-hidden="true"><svg viewBox="0 0 1200 56"><path d="M2 28 C 120 48 230 49 340 28 C 440 8 560 7 670 28 C 770 50 880 51 980 27 C 1070 6 1130 6 1198 27"/></svg></div>
+
+    <!-- LANTERN -->
+    <div class="prow">
+        <div class="prow-text">
+            <span class="tag">Creative</span>
+            <h2>Lithophane lantern</h2>
+            <p>A backlit lithophane lantern wrapped in your favourite book covers (or anything you like) — flat and plain in daylight, glowing into life the moment it's lit. Each one's made to a design you choose; a lovely gift, and a proper showcase of what the printer can do.</p>
+            <div class="actions">
+                <span class="etsy-soon"><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg> Etsy listing coming soon</span>
+                <a href="/contact" class="btn btn-primary">Commission one →</a>
+            </div>
+        </div>
+        <div class="prow-media"><div class="collage port">
+            <img class="c1" src="img/prints/lantern-1.jpg" alt="Lithophane lantern, unlit, in daylight">
+            <img class="c2" src="img/prints/lantern-2.jpg" alt="Lithophane lantern from another angle">
+            <video class="c3" src="img/prints/lantern.mp4" poster="img/prints/lantern.jpg" autoplay loop muted playsinline preload="metadata" aria-label="Lithophane lantern, lit and glowing"></video>
+        </div></div>
+    </div>
+</div></section>
+
+<!-- COMMISSION / ETSY BAND -->
+<section style="padding-top:0"><div class="wrap">
+    <div class="band">
+        <h2>Got something in mind?</h2>
+        <p>Replacement parts, a one-off gift, prototypes, a bracket that doesn't exist any more — if it can be printed, we'll help you make it. Tell us the idea and we'll take it from there.</p>
+        <div class="actions">
+            <a href="/contact" class="btn btn-primary">Start a print →</a>
+            <!-- TODO: when the Etsy shop is live, set this href to the shop URL and remove style="display:none" -->
+            <a href="#" class="btn btn-etsy" style="display:none"><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg> Visit our Etsy shop</a>
+        </div>
+    </div>
+</div></section>
+
+<footer>
+    <img src="img/logo-dark-160.png" alt="Build-3D">
+    <div style="font-family:'Lora',serif;font-style:italic;color:var(--green-600);margin-bottom:8px;">Bespoke Creativity</div>
+    © <span id="yr"></span> Build-3D · Bespoke software &amp; 3D printing<br>
+    <a href="mailto:james@build-3d.com">james@build-3d.com</a>
+</footer>
+
+<div class="lightbox" id="lightbox"><button class="lb-close" aria-label="Close">&times;</button><img id="lightboxImg" src="" alt="Enlarged photo"></div>
+<script>
+document.getElementById('yr').textContent=new Date().getFullYear();
+(function(){
+    var lb=document.getElementById('lightbox'), im=document.getElementById('lightboxImg');
+    document.querySelectorAll('.collage img').forEach(function(el){
+        el.addEventListener('click',function(){ im.src=el.currentSrc||el.src; lb.classList.add('open'); document.body.style.overflow='hidden'; });
+    });
+    function close(){ lb.classList.remove('open'); document.body.style.overflow=''; }
+    lb.addEventListener('click',function(e){ if(e.target!==im) close(); });
+    document.addEventListener('keydown',function(e){ if(e.key==='Escape') close(); });
+})();
+</script>
+</body>
+</html>
