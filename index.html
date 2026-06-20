@@ -146,12 +146,8 @@
     .collage img{cursor:zoom-in}
     .collage:hover .c1{transform:rotate(-8deg) translate(-4%,-2%)}
     .collage:hover .c2{transform:rotate(9deg) translate(4%,-2%)}
-    /* on phones the scattered layout gets cramped — show the hero card full-width instead */
-    @media (max-width:760px){
-        .collage,.collage.land,.collage.port{aspect-ratio:auto!important;max-width:440px}
-        .collage .c1,.collage .c2{display:none}
-        .collage .c3{position:relative!important;width:100%!important;height:auto!important;aspect-ratio:auto!important;object-fit:contain!important;transform:none!important;inset:auto!important;margin:0 auto}
-    }
+    /* the lantern is a portrait video — show it whole inside its card (dark bars blend with the card's dark bg) instead of cover-cropping it to a zoomed sliver */
+    .collage video{object-fit:contain}
 
     /* 3D printing — rich green band so the photo cards pop */
     #printing{background:radial-gradient(900px 500px at 12% -5%,#2c6850 0,transparent 55%),linear-gradient(160deg,#1c4032,#11271e);color:#e7efe9}
