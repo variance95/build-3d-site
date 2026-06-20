@@ -153,6 +153,10 @@
         .frow{grid-template-columns:1fr;gap:20px;margin-top:42px}
         .frow.rev .frow-media{order:0}
     }
+    .squiggle{margin:50px 0;line-height:0}
+    .squiggle + .frow{margin-top:0}
+    .squiggle svg{width:100%;height:auto;display:block;overflow:visible}
+    .squiggle path{stroke:rgba(255,255,255,.28);stroke-width:2.5;fill:none;stroke-linecap:round}
 
     /* click-to-zoom lightbox */
     .frame img,.phone img,.mock img{cursor:zoom-in}
@@ -313,15 +317,21 @@
         <div class="frow-media reveal d1"><div class="frame"><div class="bar"><i></i><i></i><i></i></div><img src="img/rescuedb/desktop/desk2.png" alt="Daily care rounds — medications checked off per shift"></div></div>
     </div>
 
+    <div class="squiggle reveal" aria-hidden="true"><svg viewBox="0 0 1200 56"><path d="M2 28 C 140 4 230 4 340 27 C 450 50 560 51 670 28 C 770 7 870 6 980 28 C 1080 48 1130 47 1198 29"/></svg></div>
+
     <div class="frow rev">
         <div class="frow-text reveal"><h3>A record for every animal</h3><p>One permanent profile per animal — photos, history, microchip and vaccination details, bonded pairs, allergies, and the full adoption and foster history. It stays on file even after they've been rehomed.</p></div>
         <div class="frow-media reveal d1"><div class="frame"><div class="bar"><i></i><i></i><i></i></div><img src="img/rescuedb/desktop/desk7.png" alt="A single animal's full profile"></div></div>
     </div>
 
+    <div class="squiggle reveal" aria-hidden="true"><svg viewBox="0 0 1200 56"><path d="M2 28 C 120 48 230 49 340 28 C 440 8 560 7 670 28 C 770 50 880 51 980 27 C 1070 6 1130 6 1198 27"/></svg></div>
+
     <div class="frow">
         <div class="frow-text reveal"><h3>Medications &amp; medical history</h3><p>Per-animal medication schedules, weight trends graphed over time, and a complete medical log — vet visits, treatments, and records imported straight from a PDF. A built-in drug reference covers every medication and diet in use, and upcoming appointments are flagged on the animal's profile.</p></div>
         <div class="frow-media reveal d1"><div class="frame"><div class="bar"><i></i><i></i><i></i></div><img src="img/rescuedb/desktop/desk5.png" alt="Weight progression graph and medical log"></div></div>
     </div>
+
+    <div class="squiggle reveal" aria-hidden="true"><svg viewBox="0 0 1200 56"><path d="M2 28 C 140 4 230 4 340 27 C 450 50 560 51 670 28 C 770 7 870 6 980 28 C 1080 48 1130 47 1198 29"/></svg></div>
 
     <div class="frow rev">
         <div class="frow-text reveal"><h3>Statistics &amp; reporting</h3><p>A year-by-year dashboard — intakes, adoptions, average days in rescue, and species &amp; breed breakdowns — with role-based access, a full audit trail, nightly backups and PDF export.</p></div>
