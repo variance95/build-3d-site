@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Build-3D — Bespoke software &amp; 3D printing</title>
+<meta name="description" content="Build-3D — bespoke software and 3D printing. Custom tools and systems built around how your organisation actually works, and printed parts made to order. Makers of RescueDB.">
+<meta property="og:title" content="Build-3D — Bespoke software & 3D printing">
+<meta property="og:description" content="Custom-built software and 3D printing, made to order. Maker of RescueDB.">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/png" href="img/favicon-64.png">
+<link rel="apple-touch-icon" href="img/logo-160.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Lora:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --green-900:#16352a; --green-800:#1d4234; --green-700:#245140;
+        --green-600:#2f6b53; --green-500:#3a8266;
+        --sage-bg:#f5f8f3; --sage-card:#eef3ea; --sage-line:#dde6d8;
+        --ink:#1c2b25; --muted:#5a6b62; --white:#fff; --rim:#e4e9e0; --orange:#e1733b;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { font-family:'DM Sans',system-ui,sans-serif; color:var(--ink); background:var(--sage-bg); line-height:1.6; -webkit-font-smoothing:antialiased; }
+    h1,h2,h3,.serif { font-family:'Lora',Georgia,serif; }
+    .wrap { max-width:1080px; margin:0 auto; padding:0 24px; }
+    section { padding:72px 0; }
+    a { color:inherit; }
+
+    /* Nav */
+    .nav { position:sticky; top:0; z-index:50; background:rgba(22,53,42,0.96); backdrop-filter:blur(8px); }
+    .nav .wrap { display:flex; justify-content:space-between; align-items:center; padding:12px 24px; }
+    .nav .brand { display:flex; align-items:center; text-decoration:none; }
+    .nav .brand img { height:56px; width:auto; display:block; }
+    .nav .links { display:flex; align-items:center; gap:4px; }
+    .nav .navitem { position:relative; }
+    .nav .navlink { display:flex; align-items:center; gap:6px; color:#cfe0d5; text-decoration:none; font-size:.92rem; font-weight:500; padding:10px 14px; border-radius:9px; transition:color .15s, background .15s; cursor:pointer; }
+    .nav .navitem:hover .navlink { color:#fff; background:rgba(255,255,255,.08); }
+    .nav .navlink .car { width:13px; height:13px; stroke:currentColor; fill:none; stroke-width:2.4; transition:transform .22s; }
+    .nav .navitem:hover .navlink .car { transform:rotate(180deg); }
+    .nav .dropdown { position:absolute; top:100%; left:0; padding-top:12px; min-width:300px; opacity:0; visibility:hidden; transform:translateY(8px); transition:opacity .18s, transform .18s, visibility .18s; }
+    .nav .dropdown.right { left:auto; right:0; }
+    .nav .navitem:hover .dropdown { opacity:1; visibility:visible; transform:translateY(0); }
+    .nav .dd { background:#fff; border-radius:14px; padding:10px; box-shadow:0 20px 48px rgba(18,48,37,.26); border:1px solid var(--rim); }
+    .nav .ditem { display:flex; gap:12px; align-items:flex-start; padding:11px 12px; border-radius:10px; text-decoration:none; transition:background .14s; }
+    .nav .ditem:hover { background:var(--sage-card); }
+    .nav .ditem .di-ico { width:36px; height:36px; border-radius:10px; background:linear-gradient(140deg,var(--green-500),var(--green-700)); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .nav .ditem .di-ico svg { width:18px; height:18px; stroke:#fff; fill:none; stroke-width:2; }
+    .nav .ditem b { color:var(--ink); font-size:.93rem; font-weight:600; display:block; }
+    .nav .ditem small { color:var(--muted); font-size:.8rem; line-height:1.35; display:block; margin-top:1px; }
+    .nav .cta { background:var(--orange); color:#fff; padding:10px 18px; border-radius:9px; text-decoration:none; font-weight:600; font-size:.9rem; margin-left:6px; transition:transform .14s, box-shadow .14s; }
+    .nav .cta:hover { transform:translateY(-1px); box-shadow:0 6px 16px rgba(225,115,59,.4); }
+    @media (max-width:640px){ .nav .links .navitem{ display:none; } }
+
+    /* Hero */
+    .hero { background:linear-gradient(150deg,var(--green-800),var(--green-900) 65%,#112a21); color:#eaf2ec; position:relative; overflow:hidden; }
+    .hero-inner { max-width:1080px; margin:0 auto; padding:84px 24px 92px; position:relative; z-index:2; }
+    .hero .eyebrow { letter-spacing:0.18em; text-transform:uppercase; font-size:0.72rem; font-weight:600; color:#9fc4b1; margin-bottom:18px; }
+    .hero h1 { font-size:clamp(2.6rem,7vw,4.6rem); font-weight:700; line-height:1.0; letter-spacing:-0.01em; max-width:14ch; }
+    .hero h1 em { font-style:normal; color:var(--green-500); }
+    .hero .tagline { font-family:'Lora',serif; font-style:italic; font-size:clamp(1.15rem,2.6vw,1.5rem); color:#d3e4d8; margin-top:24px; max-width:600px; line-height:1.4; }
+    .hero-cta { margin-top:34px; display:flex; gap:12px; flex-wrap:wrap; }
+    .hero .sig { margin-top:34px; padding-top:22px; border-top:1px solid rgba(255,255,255,0.14); font-size:0.92rem; color:#b8d2c2; }
+    .hero .sig strong { color:#fff; }
+    .blob { position:absolute; border-radius:50%; filter:blur(60px); opacity:0.4; z-index:1; }
+    .hero-grid { display:grid; grid-template-columns:1.05fr .95fr; gap:48px; align-items:center; }
+    @media (max-width:900px){ .hero-grid{ grid-template-columns:1fr; } }
+    .hmock { position:relative; z-index:2; border-radius:14px; overflow:hidden; box-shadow:0 30px 70px rgba(0,0,0,.45); transform:perspective(1400px) rotateY(-12deg) rotateX(4deg); transition:transform .5s cubic-bezier(.2,.7,.2,1); background:#0d1f18; }
+    .hmock:hover { transform:perspective(1400px) rotateY(-6deg) rotateX(2deg); }
+    @media (max-width:900px){ .hmock, .hmock:hover{ transform:none; margin-top:38px; } }
+    .hmock .hbar { display:flex; gap:6px; padding:11px 14px; background:#13261e; }
+    .hmock .hbar i { width:11px; height:11px; border-radius:50%; background:#3a5247; display:block; }
+    .hmock .hbar i:first-child{background:#e15b5b} .hmock .hbar i:nth-child(2){background:#e3a93b} .hmock .hbar i:nth-child(3){background:#4caf72}
+    .hmock img { width:100%; display:block; }
+    /* click-to-zoom lightbox */
+    .hmock img, .show-img img { cursor:zoom-in; }
+    .lightbox{position:fixed;inset:0;background:rgba(8,15,12,.93);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:24px;z-index:300;cursor:zoom-out;opacity:0;transition:opacity .2s}
+    .lightbox.open{display:flex;opacity:1}
+    .lightbox img{max-width:95vw;max-height:92vh;border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.6);cursor:default}
+    .lightbox .lb-close{position:absolute;top:16px;right:22px;width:44px;height:44px;border:none;background:rgba(255,255,255,.12);color:#fff;font-size:1.6rem;border-radius:50%;cursor:pointer;line-height:1}
+    .lightbox .lb-close:hover{background:rgba(255,255,255,.22)}
+
+    .btn { display:inline-block; padding:13px 26px; border-radius:10px; font-weight:600; font-size:0.96rem; text-decoration:none; transition:transform .12s,box-shadow .12s,background .12s; border:none; cursor:pointer; }
+    .btn-primary { background:var(--orange); color:#fff; box-shadow:0 4px 14px rgba(225,115,59,0.3); }
+    .btn-primary:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(225,115,59,0.4); }
+    .btn-ghost { background:rgba(255,255,255,0.10); color:#fff; border:1px solid rgba(255,255,255,0.25); }
+    .btn-ghost:hover { background:rgba(255,255,255,0.18); }
+
+    .sec-head { display:flex; align-items:center; gap:16px; margin-bottom:14px; }
+    .sec-head h2 { font-size:clamp(1.6rem,3.5vw,2.1rem); font-weight:600; }
+    .sec-head .rule { flex:1; height:1px; background:var(--sage-line); }
+    .sec-sub { color:var(--muted); max-width:680px; margin-bottom:40px; font-size:1.05rem; }
+
+    /* Two pillars */
+    .pillars { display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+    @media (max-width:760px){ .pillars { grid-template-columns:1fr; } }
+    .pillar { background:var(--white); border:1px solid var(--rim); border-radius:16px; padding:32px; display:flex; flex-direction:column; }
+    .pillar .ico { width:52px; height:52px; border-radius:12px; background:var(--green-700); display:flex; align-items:center; justify-content:center; margin-bottom:18px; }
+    .pillar .ico svg { width:26px; height:26px; stroke:#fff; fill:none; stroke-width:1.8; }
+    .pillar h3 { font-size:1.45rem; font-weight:600; margin-bottom:10px; }
+    .pillar p { color:var(--muted); margin-bottom:18px; }
+    .pillar .more { margin-top:auto; font-weight:600; color:var(--green-600); text-decoration:none; }
+    .pillar .more:hover { text-decoration:underline; }
+
+    /* RescueDB showcase */
+    .showcase { background:var(--white); }
+    .show-card { display:grid; grid-template-columns:1.05fr 1fr; gap:0; border:1px solid var(--rim); border-radius:18px; overflow:hidden; }
+    @media (max-width:820px){ .show-card { grid-template-columns:1fr; } }
+    .show-text { padding:40px; display:flex; flex-direction:column; justify-content:center; }
+    .show-text .tag { display:inline-block; background:var(--sage-card); color:var(--green-600); font-size:0.72rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:5px 12px; border-radius:20px; margin-bottom:16px; width:fit-content; }
+    .show-text h3 { font-size:2rem; font-weight:700; }
+    .show-text p { color:var(--muted); margin:12px 0 22px; }
+    .show-img { background:linear-gradient(150deg,var(--green-800),var(--green-900)); padding:32px; display:flex; align-items:center; }
+    .show-img img { width:100%; border-radius:10px; box-shadow:0 14px 40px rgba(0,0,0,0.3); }
+    .callout-cta { margin-top:24px; background:var(--sage-card); border:1px solid var(--sage-line); border-radius:16px; padding:28px 32px; display:flex; flex-wrap:wrap; gap:20px; align-items:center; justify-content:space-between; }
+    .callout-cta h3 { font-size:1.3rem; font-weight:600; }
+    .callout-cta p { color:var(--muted); margin-top:6px; max-width:560px; }
+    .callout-cta .btn { flex-shrink:0; }
+    .soft-note { margin-top:26px; color:var(--muted); font-size:.98rem; max-width:680px; }
+    .soft-note a { color:var(--green-600); font-weight:600; text-decoration:none; }
+    .soft-note a:hover { text-decoration:underline; }
+
+    /* 3D printing */
+    .print-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-bottom:24px; }
+    @media (max-width:760px){ .print-grid { grid-template-columns:1fr; } }
+    .prow{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;margin-top:42px}
+    .prow.rev .prow-media{order:-1}
+    @media (max-width:760px){ .prow{grid-template-columns:1fr;gap:22px;margin-top:34px} .prow.rev .prow-media{order:0} }
+    .prow-text h3{font-size:1.5rem;font-weight:600;margin-bottom:10px}
+    .prow-text p{color:var(--muted)}
+    .prow-media > img,.prow-media > video{max-width:100%;max-height:520px;width:auto;display:block;margin:0 auto;border-radius:16px;box-shadow:0 18px 44px rgba(18,48,37,.16)}
+    .prow-media > img{cursor:zoom-in}
+    .prow-media .ph{aspect-ratio:4/3;border-radius:16px;background:linear-gradient(150deg,var(--sage-card),#fff);border:1px dashed var(--sage-line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--muted);font-size:.9rem;font-weight:600}
+    .prow-media .ph svg{width:40px;height:40px;stroke:var(--green-500);fill:none;stroke-width:1.5}
+    /* scattered photo collage — a few cards laid out loosely, overlapping & tilted */
+    .collage{position:relative;width:100%;max-width:460px;margin:0 auto}
+    .collage.land{aspect-ratio:7/5}
+    .collage.port{aspect-ratio:5/6}
+    .collage > *{position:absolute;border:5px solid #fff;border-radius:10px;box-shadow:0 16px 34px rgba(18,48,37,.24);object-fit:cover;display:block;background:#0d1f18;transition:transform .25s ease}
+    .collage.land > *{width:60%;aspect-ratio:4/3}
+    .collage.port > *{width:56%;aspect-ratio:3/4}
+    .collage .c1{top:2%;left:0;transform:rotate(-6deg);z-index:1}
+    .collage .c2{top:0;right:0;transform:rotate(7deg);z-index:2}
+    .collage .c3{bottom:0;left:19%;transform:rotate(-3deg);z-index:3}
+    .collage img{cursor:zoom-in}
+    .collage:hover .c1{transform:rotate(-8deg) translate(-4%,-2%)}
+    .collage:hover .c2{transform:rotate(9deg) translate(4%,-2%)}
+    .pcard { background:var(--white); border:1px solid var(--rim); border-radius:14px; padding:26px; }
+    .pcard .ico { width:40px; height:40px; border-radius:10px; background:var(--green-700); display:flex; align-items:center; justify-content:center; margin-bottom:14px; }
+    .pcard .ico svg { width:20px; height:20px; stroke:#fff; fill:none; stroke-width:2; }
+    .pcard h3 { font-size:1.15rem; margin-bottom:8px; }
+    .pcard p { color:var(--muted); font-size:0.95rem; }
+    .draft-flag { background:#fff7ed; border:1px dashed var(--orange); color:#9a4a1e; border-radius:10px; padding:14px 18px; font-size:0.9rem; margin-bottom:28px; }
+
+    /* Contact */
+    .contact { background:linear-gradient(150deg,var(--green-700),var(--green-900)); color:#fff; border-radius:18px; padding:48px; display:flex; flex-wrap:wrap; justify-content:space-between; gap:28px; align-items:center; }
+    .contact h2 { color:#fff; font-size:1.9rem; margin-bottom:12px; }
+    .contact p { color:#c8ddd0; max-width:460px; }
+    .contact .who { text-align:right; }
+    .contact .who .nm { font-family:'Lora',serif; font-weight:700; font-size:1.2rem; }
+    .contact .who .ln { color:#bcd4c6; font-size:0.95rem; margin-top:4px; }
+    .contact .who a { color:#fff; text-decoration:none; }
+    .contact .who a:hover { text-decoration:underline; }
+    @media (max-width:600px){ .contact { flex-direction:column; align-items:flex-start; padding:36px 28px; } .contact .who { text-align:left; } }
+
+    footer { text-align:center; padding:40px 24px; color:var(--muted); font-size:0.86rem; }
+    footer a { color:var(--green-600); text-decoration:none; }
+</style>
+</head>
+<body>
+
+<nav class="nav"><div class="wrap">
+    <a href="index.html" class="brand"><img src="img/logo-light-160.png" alt="Build-3D"></a>
+    <div class="links">
+        <div class="navitem">
+            <a href="#software" class="navlink">Software <svg class="car" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></a>
+            <div class="dropdown"><div class="dd">
+                <a href="rescuedb.html" class="ditem">
+                    <span class="di-ico"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span>
+                    <span><b>RescueDB</b><small>Our flagship — a whole rescue, run from one system</small></span>
+                </a>
+                <a href="rescuedb.html#cost" class="ditem">
+                    <span class="di-ico"><svg viewBox="0 0 24 24"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
+                    <span><b>RescueDB pricing</b><small>Plans from £240/mo, no cloud fees</small></span>
+                </a>
+                <a href="contact.html" class="ditem">
+                    <span class="di-ico"><svg viewBox="0 0 24 24"><path d="M8 9l-4 3 4 3M16 9l4 3-4 3M13 5l-2 14"/></svg></span>
+                    <span><b>Custom builds</b><small>Bespoke software, for the right project</small></span>
+                </a>
+            </div></div>
+        </div>
+        <div class="navitem">
+            <a href="#printing" class="navlink">3D Printing <svg class="car" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></a>
+            <div class="dropdown right"><div class="dd">
+                <a href="#printing" class="ditem">
+                    <span class="di-ico"><svg viewBox="0 0 24 24"><path d="M12 2l9 5v10l-9 5-9-5V7z"/></svg></span>
+                    <span><b>Custom &amp; one-off prints</b><small>Bespoke objects printed from your design</small></span>
+                </a>
+                <a href="#printing" class="ditem">
+                    <span class="di-ico"><svg viewBox="0 0 24 24"><path d="M14 2v6h6M4 2h10l6 6v14H4z"/></svg></span>
+                    <span><b>Replacement &amp; spare parts</b><small>Recreate what's broken or discontinued</small></span>
+                </a>
+                <a href="#printing" class="ditem">
+                    <span class="di-ico"><svg viewBox="0 0 24 24"><path d="M3 3h18v18H3zM9 3v18M3 9h18"/></svg></span>
+                    <span><b>Prototypes &amp; small runs</b><small>Iterate a design, then print a short run</small></span>
+                </a>
+            </div></div>
+        </div>
+        <a href="contact.html" class="cta">Get in touch</a>
+    </div>
+</div></nav>
+
+<!-- HERO -->
+<header class="hero">
+    <div class="blob" style="width:340px;height:340px;background:#2f6b53;top:-80px;right:-60px;"></div>
+    <div class="hero-inner hero-grid">
+        <div>
+            <div class="eyebrow">Build-3D — Bespoke Creativity</div>
+            <h1>Everything we make is made <em>for you</em>.</h1>
+            <p class="tagline">Home of RescueDB — our complete management system for animal rescues — and bespoke, made-to-order 3D printing. Built around the job, never off the shelf.</p>
+            <div class="hero-cta">
+                <a href="#software" class="btn btn-primary">See the software</a>
+                <a href="#printing" class="btn btn-ghost">3D printing</a>
+            </div>
+            <div class="sig"><strong>Build-3D</strong> · <a href="mailto:james@build-3d.com" style="color:#fff;">james@build-3d.com</a></div>
+        </div>
+        <div class="hmock"><div class="hbar"><i></i><i></i><i></i></div><img src="img/hero-desktop.png" alt="The RescueDB app — animal list and sidebar"></div>
+    </div>
+</header>
+
+<!-- WHAT I DO -->
+<section><div class="wrap">
+    <div class="sec-head"><h2>What we make</h2><span class="rule"></span></div>
+    <p class="sec-sub">Two things we're known for: <strong>RescueDB</strong>, our management system for animal rescues, and bespoke <strong>3D printing</strong>, made to order. Need something custom built from the ground up? We take on the right projects too.</p>
+    <div class="pillars">
+        <div class="pillar">
+            <span class="ico"><svg viewBox="0 0 24 24"><path d="M8 9l-4 3 4 3M16 9l4 3-4 3M13 5l-2 14"/></svg></span>
+            <h3>RescueDB</h3>
+            <p>Our flagship product — a complete management system that runs an entire animal rescue from one place: care rounds, medications, medical records, adoptions and reporting. Self-hosted on the rescue's own hardware, with no cloud fees — and your data is never held hostage: if the plan ever ends, RescueDB keeps running with every record intact.</p>
+            <a href="#software" class="more">Explore RescueDB →</a>
+        </div>
+        <div class="pillar">
+            <span class="ico"><svg viewBox="0 0 24 24"><path d="M12 2l9 5v10l-9 5-9-5V7z"/><path d="M12 22V12M3 7l9 5 9-5"/></svg></span>
+            <h3>3D printing</h3>
+            <p>Physical parts and objects, printed to order — from one-off prototypes and replacement parts to custom pieces and small runs. Bring a design, a sketch, or just the problem, and we'll help turn it into something you can hold.</p>
+            <a href="#printing" class="more">About 3D printing →</a>
+        </div>
+    </div>
+</div></section>
+
+<!-- SOFTWARE / RESCUEDB SHOWCASE -->
+<section id="software" class="showcase"><div class="wrap">
+    <div class="sec-head"><h2>RescueDB</h2><span class="rule"></span></div>
+    <p class="sec-sub">Our management system for animal rescues — a complete system that runs on the rescue's own hardware, built and refined in a real, working rescue. Plans start at £240/month on a 12-month minimum term, rolling monthly after that; if the plan later ends, RescueDB carries on as a licence-free version — fully working, every record intact, just without updates and support.</p>
+    <div class="show-card">
+        <div class="show-text">
+            <span class="tag">Our software · RescueDB</span>
+            <h3>A whole rescue, run from one system</h3>
+            <p>A complete animal-management system — daily care rounds, medications, medical records, adoptions and reporting, all in one place and self-hosted on the rescue's own hardware. Built and refined in a real, working rescue, shaped around exactly how a rescue runs day to day.</p>
+            <div><a href="rescuedb.html" class="btn btn-primary">Explore RescueDB →</a></div>
+        </div>
+        <div class="show-img"><img src="img/rescuedb/desktop/desk7.png" alt="A RescueDB animal profile — photo, family, dates and notes"></div>
+    </div>
+    <p class="soft-note">Need something custom built? Alongside RescueDB we take on a small number of bespoke software projects each year — <a href="contact.html">get in touch</a> and tell us what you have in mind.</p>
+</div></section>
+
+<!-- 3D PRINTING -->
+<section id="printing"><div class="wrap">
+    <div class="sec-head"><h2>3D printing</h2><span class="rule"></span></div>
+    <p class="sec-sub">Made-to-order 3D printing — practical kit designed for rescues, custom one-offs, and creative pieces. A few things we've designed:</p>
+    <div class="prow">
+        <div class="prow-text"><h3>Halo reader holder</h3><p>A purpose-made holder for the Halo microchip reader — keeps it secure, charged and to hand where staff need it, instead of going missing in a drawer. Printable plain or branded to your organisation, both shown.</p></div>
+        <div class="prow-media"><div class="collage land">
+            <img class="c1" src="img/prints/halo-3.jpg" alt="Green Halo holder with the reader docked">
+            <img class="c2" src="img/prints/halo-2.jpg" alt="Halo holder with the reader in place">
+            <img class="c3" src="img/prints/halo-1.jpg" alt="3D-printed Halo microchip reader holder, branded, with the reader docked">
+        </div></div>
+    </div>
+    <div class="prow rev">
+        <div class="prow-text"><h3>The Universal Name Plate</h3><p>A modular, cage-mounted holder for a printed 6×4″ card — the animal's name, photo, medical flags and care notes, at a glance on the front of every pen. And it's built into RescueDB: export any animal and out comes a print-ready 6×4 that slots straight in. They screw on, rearrangeable, and printed to fit your cages.</p></div>
+        <div class="prow-media"><div class="ph"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h5M6 14h8"/></svg><span>Photos coming soon</span></div></div>
+    </div>
+    <div class="prow">
+        <div class="prow-text"><h3>Lithophane lantern</h3><p>A backlit lithophane lantern wrapped in favourite book covers — flat and plain in daylight, glowing into life the moment it's lit. A bit of fun that shows what the printer can really do.</p></div>
+        <div class="prow-media"><div class="collage port">
+            <img class="c1" src="img/prints/lantern-1.jpg" alt="Lithophane lantern, unlit, in daylight">
+            <img class="c2" src="img/prints/lantern-2.jpg" alt="Lithophane lantern from another angle">
+            <video class="c3" src="img/prints/lantern.mp4" poster="img/prints/lantern.jpg" autoplay loop muted playsinline preload="metadata" aria-label="Lithophane lantern, lit and glowing"></video>
+        </div></div>
+    </div>
+    <div style="margin-top:42px;"><a href="contact.html" class="btn btn-primary">Discuss a print →</a></div>
+</div></section>
+
+<!-- CONTACT -->
+<section id="contact"><div class="wrap">
+    <div class="contact">
+        <div>
+            <h2>Get in touch</h2>
+            <p>Software, a print, or just an idea you're not sure how to make real — drop us a line and we'll get back to you.</p>
+            <div style="margin-top:22px;"><a href="contact.html" class="btn btn-primary">Get in touch</a></div>
+        </div>
+        <div class="who">
+            <div class="nm">James Scott</div>
+            <div class="ln">Build-3D</div>
+            <div class="ln"><a href="mailto:james@build-3d.com">james@build-3d.com</a></div>
+            <div class="ln"><a href="tel:+447801555605">07801 555 605</a></div>
+        </div>
+    </div>
+</div></section>
+
+<footer>
+    <img src="img/logo-dark-160.png" alt="Build-3D" style="height:46px;width:auto;margin:0 auto 14px;display:block;opacity:.85;">
+    <div style="font-family:'Lora',serif;font-style:italic;color:var(--green-600);margin-bottom:8px;">Bespoke Creativity</div>
+    © <span id="yr"></span> Build-3D · Bespoke software &amp; 3D printing<br>
+    <a href="mailto:james@build-3d.com">james@build-3d.com</a>
+</footer>
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+
+<div class="lightbox" id="lightbox"><button class="lb-close" aria-label="Close">&times;</button><img id="lightboxImg" src="" alt="Enlarged screenshot"></div>
+<script>
+(function(){
+    var lb=document.getElementById('lightbox'), im=document.getElementById('lightboxImg');
+    document.querySelectorAll('.hmock img, .show-img img, .collage img').forEach(function(el){
+        el.addEventListener('click',function(){ im.src=el.currentSrc||el.src; lb.classList.add('open'); document.body.style.overflow='hidden'; });
+    });
+    function close(){ lb.classList.remove('open'); document.body.style.overflow=''; }
+    lb.addEventListener('click',function(e){ if(e.target!==im) close(); });
+    document.addEventListener('keydown',function(e){ if(e.key==='Escape') close(); });
+})();
+</script>
+
+</body>
+</html>

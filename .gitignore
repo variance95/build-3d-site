@@ -1,0 +1,6 @@
+# Original camera files & unused uploads — keep them off the public repo
+img/rescuedb/3dprints/
+img/rescuedb/*.png
+img/rescuedb/*.jpeg
+img/rescuedb/*.JPG
+.DS_Store

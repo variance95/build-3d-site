@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Build-3D</title>
+<meta name="description" content="Get in touch with Build-3D about RescueDB, 3D printing, or a bespoke project.">
+<link rel="icon" type="image/png" href="img/favicon-64.png">
+<link rel="apple-touch-icon" href="img/logo-160.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Lora:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+    :root{--green-900:#16352a;--green-800:#1d4234;--green-700:#245140;--green-600:#2f6b53;--green-500:#3a8266;
+        --sage-bg:#f5f8f3;--sage-card:#eef3ea;--sage-line:#dde6d8;--ink:#1c2b25;--muted:#5a6b62;--white:#fff;--rim:#e4e9e0;--orange:#e1733b;}
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(--sage-bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+    h1,h2,h3,.serif{font-family:'Lora',Georgia,serif}
+    .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+    a{color:inherit}
+    /* nav */
+    .nav{position:sticky;top:0;z-index:50;background:rgba(22,53,42,.96);backdrop-filter:blur(8px)}
+    .nav .wrap{display:flex;justify-content:space-between;align-items:center;padding:12px 24px}
+    .nav .brand{display:flex;align-items:center;text-decoration:none}
+    .nav .brand img{height:56px;width:auto;display:block}
+    .nav .links a{color:#cfe0d5;text-decoration:none;margin-left:22px;font-size:.92rem;font-weight:500}
+    .nav .links a:hover,.nav .links a.active{color:#fff}
+    @media (max-width:560px){.nav .links a:not(.active){display:none}}
+    /* hero */
+    .head{background:radial-gradient(900px 400px at 80% -20%,#2c6850 0,transparent 60%),linear-gradient(160deg,#1d4234,#16352a);color:#eaf2ec;padding:56px 0 44px;text-align:center}
+    .head h1{font-size:clamp(2.2rem,5vw,3.2rem);font-weight:700}
+    .head p{color:#cfe0d5;max-width:560px;margin:14px auto 0}
+    /* layout */
+    .grid{display:grid;grid-template-columns:1.4fr 1fr;gap:36px;padding:56px 0}
+    @media (max-width:780px){.grid{grid-template-columns:1fr;gap:28px}}
+    .card{background:var(--white);border:1px solid var(--rim);border-radius:18px;padding:34px;box-shadow:0 12px 30px rgba(18,48,37,.06)}
+    label{display:block;font-size:.82rem;font-weight:600;color:var(--ink);margin:0 0 6px}
+    .req{color:var(--orange)}
+    input,select,textarea{width:100%;padding:12px 14px;border:1px solid var(--rim);border-radius:10px;font:inherit;color:var(--ink);background:#fcfdfb;transition:border-color .15s,box-shadow .15s}
+    input:focus,select:focus,textarea:focus{outline:none;border-color:var(--green-500);box-shadow:0 0 0 3px rgba(58,130,102,.15)}
+    textarea{min-height:140px;resize:vertical}
+    .field{margin-bottom:18px}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    @media (max-width:520px){.row{grid-template-columns:1fr}}
+    .btn{display:inline-block;width:100%;padding:14px 26px;border-radius:11px;font-weight:600;font-size:1rem;border:none;cursor:pointer;background:var(--orange);color:#fff;box-shadow:0 6px 18px rgba(225,115,59,.34);transition:transform .14s,box-shadow .14s,opacity .14s}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(225,115,59,.44)}
+    .btn:disabled{opacity:.6;cursor:default;transform:none}
+    .hp{position:absolute;left:-9999px}
+    .msg{margin-top:16px;padding:14px 16px;border-radius:10px;font-size:.95rem;display:none}
+    .msg.ok{display:block;background:#e8f5ec;border:1px solid #bfe3cc;color:#1d6b3f}
+    .msg.err{display:block;background:#fdecea;border:1px solid #f3c2bc;color:#b1382b}
+    /* aside */
+    .aside h3{font-size:1.2rem;margin-bottom:6px}
+    .aside p{color:var(--muted);font-size:.96rem;margin-bottom:22px}
+    .contact-line{display:flex;align-items:center;gap:12px;margin-bottom:14px;text-decoration:none}
+    .contact-line .ic{width:40px;height:40px;border-radius:11px;background:var(--sage-card);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .contact-line .ic svg{width:19px;height:19px;stroke:var(--green-600);fill:none;stroke-width:2}
+    .contact-line .t small{display:block;color:var(--muted);font-size:.78rem}
+    .contact-line .t b{font-weight:600;color:var(--ink)}
+    .contact-line:hover .t b{color:var(--green-600)}
+    footer{text-align:center;padding:40px 24px;color:var(--muted);font-size:.86rem;border-top:1px solid var(--sage-line)}
+    footer a{color:var(--green-600);text-decoration:none}
+</style>
+</head>
+<body>
+
+<nav class="nav"><div class="wrap">
+    <a href="index.html" class="brand"><img src="img/logo-light-160.png" alt="Build-3D"></a>
+    <div class="links">
+        <a href="index.html#software">Software</a>
+        <a href="index.html#printing">3D Printing</a>
+        <a href="contact.html" class="active">Contact</a>
+    </div>
+</div></nav>
+
+<header class="head">
+    <div class="wrap">
+        <h1>Get in touch</h1>
+        <p>Whether it's RescueDB, a 3D print, or a bespoke project you're mulling over — tell us what you have in mind and we'll get back to you.</p>
+    </div>
+</header>
+
+<div class="wrap"><div class="grid">
+    <!-- FORM -->
+    <div class="card">
+        <form id="contactForm">
+            <!-- Web3Forms: replace the access key below with your own (free) key from https://web3forms.com -->
+            <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+            <input type="hidden" name="subject" value="New enquiry from build-3d.com">
+            <input type="hidden" name="from_name" value="Build-3D website">
+            <!-- honeypot (spam trap) -->
+            <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
+
+            <div class="row">
+                <div class="field">
+                    <label for="name">Your name <span class="req">*</span></label>
+                    <input id="name" type="text" name="name" required autocomplete="name">
+                </div>
+                <div class="field">
+                    <label for="email">Email <span class="req">*</span></label>
+                    <input id="email" type="email" name="email" required autocomplete="email">
+                </div>
+            </div>
+            <div class="row">
+                <div class="field">
+                    <label for="org">Organisation / rescue</label>
+                    <input id="org" type="text" name="organisation" autocomplete="organization">
+                </div>
+                <div class="field">
+                    <label for="interest">I'm interested in</label>
+                    <select id="interest" name="interest">
+                        <option>RescueDB</option>
+                        <option>3D printing</option>
+                        <option>Bespoke software</option>
+                        <option>Something else</option>
+                    </select>
+                </div>
+            </div>
+            <div class="field">
+                <label for="message">Message <span class="req">*</span></label>
+                <textarea id="message" name="message" required placeholder="Tell us a little about what you're after…"></textarea>
+            </div>
+            <button class="btn" type="submit" id="submitBtn">Send message</button>
+            <div class="msg" id="formMsg"></div>
+        </form>
+    </div>
+
+    <!-- ASIDE -->
+    <div class="aside">
+        <h3>Prefer to reach out directly?</h3>
+        <p>However you get in touch, it reaches us directly — no call centre, no ticket queue, just a real reply.</p>
+        <a class="contact-line" href="mailto:james@build-3d.com">
+            <span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+            <span class="t"><small>Email</small><b>james@build-3d.com</b></span>
+        </a>
+        <a class="contact-line" href="tel:+447801555605">
+            <span class="ic"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+            <span class="t"><small>Phone</small><b>07801 555 605</b></span>
+        </a>
+        <a class="contact-line" href="rescuedb.html">
+            <span class="ic"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span>
+            <span class="t"><small>Learn more</small><b>About RescueDB</b></span>
+        </a>
+    </div>
+</div></div>
+
+<footer>
+    <img src="img/logo-dark-160.png" alt="Build-3D" style="height:42px;width:auto;margin:0 auto 12px;display:block;opacity:.85;">
+    <div style="font-family:'Lora',serif;font-style:italic;color:var(--green-600);margin-bottom:8px;">Bespoke Creativity</div>
+    © <span id="yr"></span> Build-3D · Bespoke software &amp; 3D printing<br>
+    <a href="mailto:james@build-3d.com">james@build-3d.com</a>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+const form = document.getElementById('contactForm');
+const btn = document.getElementById('submitBtn');
+const out = document.getElementById('formMsg');
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    out.className = 'msg';
+    btn.disabled = true; btn.textContent = 'Sending…';
+    try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: { 'Accept': 'application/json' },
+            body: new FormData(form)
+        });
+        const data = await res.json();
+        if (data.success) {
+            out.className = 'msg ok';
+            out.textContent = 'Thanks — your message is on its way. We’ll be in touch shortly.';
+            form.reset();
+            btn.textContent = 'Sent';
+        } else {
+            throw new Error(data.message || 'Submission failed');
+        }
+    } catch (err) {
+        out.className = 'msg err';
+        out.textContent = 'Sorry, something went wrong sending that. Please email james@build-3d.com directly.';
+        btn.disabled = false; btn.textContent = 'Send message';
+    }
+});
+</script>
+
+</body>
+</html>
