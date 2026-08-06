@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dark Sky &amp; Stargazing — Foldgate Farm</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Public+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{ --night:#0a0e1a; --night-2:#111a2e; --panel:#141d33; --star:#f4f1e8; --stone:#c7c4b8; --amber:#c9974a; --sage:#8a9a72; --line: rgba(244,241,232,0.12); }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{ scroll-behavior:smooth; }
+  body{ background: var(--night); color: var(--star); font-family: 'Public Sans', sans-serif; line-height:1.6; }
+  h1,h2,h3{ font-family:'Newsreader', serif; font-weight:500; letter-spacing:0.2px; }
+  a{ color:inherit; }
+  .wrap{ max-width:1100px; margin:0 auto; padding:0 32px; }
+  section{ padding:76px 0; }
+
+  .concept-banner{ background:var(--panel); border-bottom:1px solid var(--line); text-align:center; padding:10px 16px; font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.4px; color:var(--stone); }
+  .concept-banner a{ color:var(--amber); text-decoration:none; }
+  .concept-banner a:hover{ text-decoration:underline; }
+
+  .nav-bar{ position:sticky; top:0; z-index:50; background:rgba(10,14,26,0.88); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
+  .nav-inner{ display:flex; align-items:center; justify-content:space-between; padding:20px 0; }
+  .brand{ font-family:'Newsreader', serif; font-size:19px; letter-spacing:0.3px; text-decoration:none; color:var(--star); }
+  .brand span{ color:var(--stone); font-style:italic; }
+  .navlinks{ display:flex; align-items:center; gap:6px; }
+  .navitem{ position:relative; }
+  .navlink{ display:flex; align-items:center; gap:6px; text-decoration:none; cursor:pointer; color:var(--stone); font-size:13px; letter-spacing:0.4px; text-transform:uppercase; padding:10px 14px; transition:color .15s; }
+  .navlink:hover, .navlink.active{ color:var(--star); }
+  .navlink .car{ width:11px; height:11px; stroke:currentColor; fill:none; stroke-width:2.4; transition:transform .2s; }
+  .navitem:hover .navlink .car{ transform:rotate(180deg); }
+  .nav-cta{ background:var(--amber); color:#241a08; padding:10px 20px; border-radius:2px; font-size:12px; letter-spacing:0.5px; text-transform:uppercase; font-weight:600; text-decoration:none; margin-left:8px; transition:transform .15s, box-shadow .15s; }
+  .nav-cta:hover{ transform:translateY(-2px); box-shadow:0 8px 20px rgba(201,151,74,.3); }
+  .dropdown{ position:absolute; top:100%; left:50%; transform:translateX(-50%) translateY(8px); padding-top:14px; min-width:220px; opacity:0; visibility:hidden; transition:opacity .18s ease, transform .18s ease, visibility .18s; }
+  .navitem:hover .dropdown{ opacity:1; visibility:visible; transform:translateX(-50%) translateY(0); }
+  .dd{ background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:8px; box-shadow:0 20px 44px rgba(0,0,0,.4); }
+  .ditem{ display:block; padding:10px 14px; border-radius:5px; text-decoration:none; color:var(--stone); font-size:13px; transition:background .14s, color .14s; }
+  .ditem:hover{ background:rgba(255,255,255,.06); color:var(--star); }
+  .ditem.active{ background:rgba(201,151,74,.12); color:var(--amber); }
+
+  .burger{ display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:6px; }
+  .burger span{ width:22px; height:2px; background:var(--star); transition:transform .3s ease, opacity .3s ease; display:block; }
+  .burger.active span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+  .burger.active span:nth-child(2){ opacity:0; }
+  .burger.active span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+  .mobile-menu{ position:fixed; inset:0; z-index:60; overflow-y:auto; background:rgba(9,13,24,0.97); backdrop-filter:blur(6px); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:26px; padding:90px 24px 50px; opacity:0; visibility:hidden; transform:translateY(-14px); transition:opacity .3s ease, transform .3s ease, visibility .3s; }
+  .mobile-menu.open{ opacity:1; visibility:visible; transform:translateY(0); }
+  .mm-group{ width:100%; max-width:320px; }
+  .mm-group-label{ font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:1.2px; text-transform:uppercase; color:var(--amber); margin-bottom:10px; }
+  .mm-group a{ display:block; font-family:'Public Sans',sans-serif; font-size:16px; padding:11px 0; border-bottom:1px solid var(--line); text-decoration:none; color:var(--star); }
+  .mm-group a:hover{ color:var(--amber); }
+  .mobile-menu .nav-cta{ width:100%; max-width:320px; text-align:center; margin-left:0; }
+  .mm-close{ position:absolute; top:24px; right:26px; width:40px; height:40px; border-radius:50%; background:rgba(255,255,255,.08); border:none; color:var(--star); font-size:22px; cursor:pointer; line-height:1; }
+
+  .page-head{ background:radial-gradient(900px 420px at 80% -20%, #2c3a5c 0, transparent 60%), linear-gradient(160deg, var(--night-2), var(--night)); padding:64px 0 54px; border-bottom:1px solid var(--line); }
+  .eyebrow{ font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:1.5px; text-transform:uppercase; color:var(--amber); margin-bottom:16px; }
+  .page-head h1{ font-size:clamp(30px,5vw,46px); line-height:1.08; max-width:680px; }
+  .page-head p{ color:var(--stone); margin-top:16px; max-width:520px; font-size:15px; }
+
+  .btn{ display:inline-block; padding:13px 26px; border-radius:2px; font-size:13px; letter-spacing:0.5px; text-transform:uppercase; text-decoration:none; border:1px solid var(--line); cursor:pointer; font-family:inherit; transition:transform .15s ease, box-shadow .15s ease; }
+  .btn:hover{ transform:translateY(-2px); }
+  .btn-primary{ background:var(--amber); color:#241a08; border-color:var(--amber); }
+  .btn-primary:hover{ box-shadow:0 10px 24px rgba(201,151,74,.32); }
+
+  .reveal{ opacity:0; transform:translateY(24px); transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in{ opacity:1; transform:none; }
+  .reveal.d1{ transition-delay:.08s; }
+  @media (prefers-reduced-motion:reduce){ .reveal{ opacity:1; transform:none; transition:none; } }
+
+  .sky-grid{ display:grid; grid-template-columns:1.1fr .9fr; gap:56px; align-items:center; }
+  @media (max-width:820px){ .sky-grid{ grid-template-columns:1fr; } }
+  .sky-img{ aspect-ratio:3/2; border-radius:4px; background:url('img/work/foldgate/telescope.jpg') center/cover no-repeat; }
+  .bortle{ margin-top:40px; max-width:460px; }
+  .bortle-bar{ position:relative; height:8px; border-radius:5px; background:linear-gradient(90deg, #0a0e1a, #2a3a5c 45%, #c9974a 78%, #f4e4c1); }
+  .bortle-mark{ position:absolute; top:20px; transform:translateX(-50%); text-align:center; white-space:nowrap; }
+  .bortle-mark b{ display:block; font-size:11px; color:var(--star); font-family:'JetBrains Mono',monospace; }
+  .bortle-mark small{ display:block; font-size:10px; color:var(--stone); margin-top:2px; }
+  .bortle-mark::before{ content:''; position:absolute; top:-16px; left:50%; transform:translateX(-50%); width:2px; height:12px; background:var(--amber); }
+  .bortle-mark.town::before{ background:var(--stone); }
+  .bortle-scale{ display:flex; justify-content:space-between; margin-top:46px; font-size:10px; text-transform:uppercase; letter-spacing:.6px; color:var(--stone); }
+
+  .closing{ text-align:center; border-top:1px solid var(--line); background:var(--night-2); }
+  .closing h2{ font-size:28px; }
+  .closing p{ color:var(--stone); margin-top:10px; }
+
+  footer{ padding:50px 32px; text-align:center; color:var(--stone); font-size:12px; border-top:1px solid var(--line); }
+  footer a{ color:var(--amber); text-decoration:none; }
+  footer a:hover{ text-decoration:underline; }
+
+  @media (max-width: 800px){ .navlinks{ display:none; } .burger{ display:flex; } }
+</style>
+</head>
+<body>
+
+<div class="concept-banner">Concept design by <a href="/web-design">Build-3D</a>. A fictional client, built to show what's possible</div>
+
+<div class="nav-bar"><div class="wrap nav-inner">
+  <a href="foldgate-farm.html" class="brand">Foldgate Farm <span>&amp; Dark Sky Camp</span></a>
+  <div class="navlinks">
+    <div class="navitem">
+      <a href="foldgate-pitches.html" class="navlink">Your Stay <svg class="car" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></a>
+      <div class="dropdown"><div class="dd">
+        <a href="foldgate-sitemap.html" class="ditem">Site map</a>
+        <a href="foldgate-prices.html" class="ditem">Prices</a>
+        <a href="foldgate-pitches.html" class="ditem">Our pitches</a>
+        <a href="foldgate-facilities.html" class="ditem">Site facilities</a>
+      </div></div>
+    </div>
+    <div class="navitem">
+      <a href="foldgate-farm.html#farm" class="navlink active">The Farm <svg class="car" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></a>
+      <div class="dropdown"><div class="dd">
+        <a href="foldgate-activities.html" class="ditem">Activities</a>
+        <a href="foldgate-entertainment.html" class="ditem">Entertainment</a>
+        <a href="foldgate-local-area.html" class="ditem">Local area</a>
+        <a href="foldgate-dark-sky.html" class="ditem active">Dark sky &amp; stargazing</a>
+      </div></div>
+    </div>
+    <a href="foldgate-farm.html#book" class="nav-cta">Book Now</a>
+  </div>
+  <button class="burger" id="burgerBtn" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</div></div>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mm-close" id="mmClose" aria-label="Close menu">&times;</button>
+  <div class="mm-group">
+    <div class="mm-group-label">Your Stay</div>
+    <a href="foldgate-sitemap.html">Site map</a>
+    <a href="foldgate-prices.html">Prices</a>
+    <a href="foldgate-pitches.html">Our pitches</a>
+    <a href="foldgate-facilities.html">Site facilities</a>
+  </div>
+  <div class="mm-group">
+    <div class="mm-group-label">The Farm</div>
+    <a href="foldgate-activities.html">Activities</a>
+    <a href="foldgate-entertainment.html">Entertainment</a>
+    <a href="foldgate-local-area.html">Local area</a>
+    <a href="foldgate-dark-sky.html">Dark sky &amp; stargazing</a>
+  </div>
+  <a href="foldgate-farm.html#book" class="nav-cta">Book Now</a>
+</div>
+
+<header class="page-head"><div class="wrap">
+  <div class="eyebrow reveal">Why the sky here</div>
+  <h1 class="reveal d1">Weardale's one of the last places in England you can actually see it.</h1>
+</div></header>
+
+<section class="wrap">
+  <div class="sky-grid">
+    <div class="reveal">
+      <p style="color:var(--stone);font-size:15px;">Weardale sits inside the North Pennines Dark Sky Park, one of the largest protected dark-sky areas in Europe. There's no town for miles, and the farm doesn't run any lighting after dark that isn't shielded and pointed down. On a clear night you can see the Milky Way with the naked eye. No filters, no apps.</p>
+      <div class="bortle">
+        <div class="bortle-bar">
+          <span class="bortle-mark here" style="left:14%"><b>Foldgate</b><small>Class 2</small></span>
+          <span class="bortle-mark town" style="left:82%"><b>Most towns</b><small>Class 7+</small></span>
+        </div>
+        <div class="bortle-scale"><span>Darkest sky</span><span>Brightest sky</span></div>
+      </div>
+    </div>
+    <div class="sky-img reveal d1"></div>
+  </div>
+</section>
+
+<section class="closing"><div class="wrap">
+  <h2 class="reveal">Ready to book?</h2>
+  <p class="reveal">Check what's open and get a pitch sorted.</p>
+  <div style="margin-top:24px;" class="reveal"><a href="foldgate-farm.html#book" class="btn btn-primary">Check availability →</a></div>
+</div></section>
+
+<footer>
+  Foldgate Farm &amp; Dark Sky Camp · Weardale, County Durham · A concept design by <a href="/web-design">Build-3D</a>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((es)=>{
+    es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  (function(){
+    var burger=document.getElementById('burgerBtn'), menu=document.getElementById('mobileMenu'), close=document.getElementById('mmClose');
+    function open(){ menu.classList.add('open'); burger.classList.add('active'); burger.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+    function shut(){ menu.classList.remove('open'); burger.classList.remove('active'); burger.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+    burger.addEventListener('click', function(){ menu.classList.contains('open') ? shut() : open(); });
+    close.addEventListener('click', shut);
+    menu.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', shut); });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape' && menu.classList.contains('open')) shut(); });
+  })();
+</script>
+</body>
+</html>
