@@ -69,11 +69,34 @@
   .reveal.d1{ transition-delay:.08s; } .reveal.d2{ transition-delay:.16s; } .reveal.d3{ transition-delay:.24s; }
   @media (prefers-reduced-motion:reduce){ .reveal{ opacity:1; transform:none; transition:none; } }
 
-  .info-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--line); border:1px solid var(--line); }
-  @media (max-width:700px){ .info-grid{ grid-template-columns:1fr; } }
-  .info-card{ background:var(--panel); padding:26px 28px; }
-  .info-card b{ display:block; font-size:14.5px; margin-bottom:6px; }
-  .info-card span{ display:block; color:var(--stone); font-size:13px; }
+  /* a walking route around the site — each item as a waypoint stop */
+  .trail{ position:relative; max-width:880px; padding-left:4px; margin:44px 0; }
+  .trail::before{
+    content:''; position:absolute; top:6px; bottom:14px; left:27px; width:2px;
+    background-image:repeating-linear-gradient(to bottom, var(--amber) 0 5px, transparent 5px 13px);
+    opacity:.7;
+  }
+  .stop{ position:relative; display:flex; align-items:center; gap:16px; }
+  .stop + .stop{ margin-top:50px; }
+  .stop-marker{
+    position:absolute; left:0; top:-4px; width:52px; height:52px; border-radius:50%;
+    background:var(--night-2); border:2px solid var(--amber);
+    display:flex; align-items:center; justify-content:center; z-index:2;
+  }
+  .stop-marker svg{ width:23px; height:23px; stroke:var(--amber); fill:none; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; }
+  .stop-body{ flex:1; min-width:0; padding-left:70px; }
+  .stop-tag{ font-family:'JetBrains Mono', monospace; font-size:10.5px; letter-spacing:1.3px; text-transform:uppercase; color:var(--sage); margin-bottom:8px; margin-top:6px; }
+  .stop-photo{ flex-shrink:0; width:92px; height:92px; }
+  @media (min-width:680px){ .stop-photo{ width:220px; height:220px; } }
+  .stop-photo img{
+    width:100%; height:100%; object-fit:cover; display:block;
+    -webkit-mask-image: radial-gradient(circle, #000 60%, transparent 90%);
+    mask-image: radial-gradient(circle, #000 60%, transparent 90%);
+    filter: brightness(.85) saturate(.9);
+    opacity:.96;
+  }
+  .stop h3{ font-family:'Newsreader', serif; font-size:21px; font-weight:500; }
+  .stop p{ color:var(--stone); font-size:14.5px; line-height:1.6; margin-top:9px; max-width:420px; }
 
   .closing{ text-align:center; border-top:1px solid var(--line); background:var(--night-2); }
   .closing h2{ font-size:28px; }
@@ -88,9 +111,9 @@
 </head>
 <body>
 
-<div class="concept-banner">Concept design by <a href="/web-design">Build-3D</a>. A fictional client, built to show what's possible</div>
-
-<div class="nav-bar"><div class="wrap nav-inner">
+<div class="nav-bar">
+  <div class="concept-banner">A concept design by <a href="/web-design">Build-3D</a></div>
+  <div class="wrap nav-inner">
   <a href="foldgate-farm.html" class="brand">Foldgate Farm <span>&amp; Dark Sky Camp</span></a>
   <div class="navlinks">
     <div class="navitem">
@@ -142,11 +165,43 @@
 </div></header>
 
 <section class="wrap">
-  <div class="info-grid">
-    <div class="info-card reveal"><b>Fire pit gatherings</b><span>Weekends, weather allowing — bring your own marshmallows.</span></div>
-    <div class="info-card reveal d1"><b>Board games in the barn</b><span>A shelf of them, help yourself.</span></div>
-    <div class="info-card reveal d2"><b>Stargazing talks</b><span>Occasional, run by a guest astronomer — dates on the noticeboard.</span></div>
-    <div class="info-card reveal d3"><b>Star charts</b><span>Laminated charts and a red-light torch, free to borrow.</span></div>
+  <div class="trail">
+    <div class="stop reveal">
+      <span class="stop-marker"><svg viewBox="0 0 24 24"><path d="M12 22c4 0 6-2.5 6-6 0-3-2-5-3-8-.5 2-2 3-2 5.5a2 2 0 0 1-4 0c0-4.5 3.5-7 3.5-11-4 3-6.5 7.5-6.5 12.5 0 4 2.5 7 6 7z"/></svg></span>
+      <div class="stop-body">
+        <div class="stop-tag">By the fire pit</div>
+        <h3>Fire pit gatherings</h3>
+        <p>Weekends, weather allowing — whoever's about pulls a chair up. Bring your own marshmallows.</p>
+      </div>
+      <span class="stop-photo"><img src="img/work/foldgate/campfire.jpg" alt="" loading="lazy"></span>
+    </div>
+    <div class="stop reveal">
+      <span class="stop-marker"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="8" r="1"/><circle cx="16" cy="8" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="8" cy="16" r="1"/><circle cx="16" cy="16" r="1"/></svg></span>
+      <div class="stop-body">
+        <div class="stop-tag">In the barn</div>
+        <h3>Board games in the barn</h3>
+        <p>A shelf of them in the barn, help yourself and put them back when you're done.</p>
+      </div>
+      <span class="stop-photo"><img src="img/work/foldgate/g3.jpg" alt="" loading="lazy"></span>
+    </div>
+    <div class="stop reveal">
+      <span class="stop-marker"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14 2 9.27l6.91-1.01z"/></svg></span>
+      <div class="stop-body">
+        <div class="stop-tag">Some evenings</div>
+        <h3>Stargazing talks</h3>
+        <p>Occasional evenings run by a guest astronomer from the local society — dates go up on the noticeboard a week ahead.</p>
+      </div>
+      <span class="stop-photo"><img src="img/work/foldgate/star-trails.jpg" alt="" loading="lazy"></span>
+    </div>
+    <div class="stop reveal">
+      <span class="stop-marker"><svg viewBox="0 0 24 24"><path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4z"/><path d="M8 2v16"/><path d="M16 6v16"/></svg></span>
+      <div class="stop-body">
+        <div class="stop-tag">From the barn</div>
+        <h3>Star charts</h3>
+        <p>Laminated charts for the season and a red-light torch that won't wreck your night vision, free to borrow.</p>
+      </div>
+      <span class="stop-photo"><img src="img/work/foldgate/milky-way-2.jpg" alt="" loading="lazy"></span>
+    </div>
   </div>
 </section>
 
@@ -157,7 +212,7 @@
 </div></section>
 
 <footer>
-  Foldgate Farm &amp; Dark Sky Camp · Weardale, County Durham · A concept design by <a href="/web-design">Build-3D</a>
+  Foldgate Farm &amp; Dark Sky Camp · North Pennines, County Durham · A concept design by <a href="/web-design">Build-3D</a>
 </footer>
 
 <script>

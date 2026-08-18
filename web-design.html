@@ -72,18 +72,6 @@
     .show-text p{color:var(--muted);margin:12px 0 22px}
     .show-img{background:#0a0e1a;min-height:260px;background-size:cover;background-position:center 60%}
 
-    /* already-live examples */
-    .already{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
-    @media (max-width:620px){.already{grid-template-columns:1fr}}
-    .ex{display:block;background:var(--white);border:1px solid var(--rim);border-radius:14px;padding:20px 22px;text-decoration:none;transition:border-color .15s,transform .15s}
-    .ex:hover{border-color:var(--green-500);transform:translateY(-2px)}
-    .ex b{display:block;font-size:1.05rem;font-weight:600;color:var(--ink)}
-    .ex span{display:block;color:var(--muted);font-size:.9rem;margin-top:4px}
-    .ex .arrow{color:var(--green-600);font-weight:600;font-size:.86rem;margin-top:10px;display:block}
-
-    .ph{position:relative;width:100%;max-width:520px;margin:28px 0 0;aspect-ratio:16/6;border-radius:14px;background:linear-gradient(150deg,var(--sage-card),#fff);border:1px dashed var(--sage-line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--muted);font-size:.9rem;font-weight:600;text-align:center;padding:18px}
-    .ph svg{width:34px;height:34px;stroke:var(--green-500);fill:none;stroke-width:1.5}
-
     .band{background:radial-gradient(800px 420px at 15% 0,#2c6850 0,transparent 60%),linear-gradient(160deg,#1c4032,#11271e);color:#e7efe9;border-radius:20px;padding:44px}
     .band h2{color:#fff;font-size:1.7rem;margin-bottom:12px}
     .band p{color:#bcd4c6;max-width:620px}
@@ -110,14 +98,14 @@
 <header class="head"><div class="wrap">
     <div class="eyebrow">Build-3D — Bespoke Creativity</div>
     <h1>Websites, made to fit</h1>
-    <p>No page builders, no templates — every site is custom-built and shaped around your brand, from a single landing page to a full product site. This very site, and RescueDB's, were built the same way.</p>
+    <p>No page builders, no templates — every site is custom-built around your brand, from a single landing page to a full product site. You're looking at one right now.</p>
     <div class="cta"><a href="/contact" class="btn btn-primary">Discuss a website →</a></div>
 </div></header>
 
 <section><div class="wrap">
     <div class="intro">
-        <p>A website should say what you do, look like nobody else's, and load instantly. We build them from scratch — plain HTML, CSS and a little JavaScript, no bloated frameworks or subscription page-builders — so they're fast, easy to keep updated, and yours outright.</p>
-        <p>Whether it's a simple site that explains the business and gets people in touch, or something with more moving parts, it's shaped around what you actually need — not a template with your logo dropped in.</p>
+        <p>A website only works if it says what you do and loads fast — a lot of them don't, because they're built on a stack of plugins and a theme nobody really chose. We build from scratch in plain HTML, CSS and a little JavaScript, so there's nothing extra weighing the page down and nothing to untangle later when something needs to change.</p>
+        <p>Whether that's a simple one-pager that explains the business and gets people in touch, or something with more moving parts — bookings, a menu, a shop — the site does the job you actually need, not the job a template assumes you need.</p>
     </div>
     <div class="feats">
         <div class="feat">
@@ -128,7 +116,7 @@
         <div class="feat">
             <span class="ico"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8"/></svg></span>
             <h3>Landing pages</h3>
-            <p>One focused page for a launch, product or service — built to get people to the one thing that matters.</p>
+            <p>One focused page for a launch, product or service, doing exactly one job: get people to the thing that matters and nothing else.</p>
         </div>
         <div class="feat">
             <span class="ico"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-6.2-8.56M21 3v6h-6"/></svg></span>
@@ -140,13 +128,13 @@
 
 <section style="padding-top:0"><div class="wrap">
     <h2>A look at the work</h2>
-    <p style="color:var(--muted);max-width:640px;margin-top:10px;">Everything we build is custom. Real client projects are coming soon as sites go live — for now, here are two concept builds showing the approach, plus two live examples of our own.</p>
+    <p style="color:var(--muted);max-width:640px;margin-top:10px;">This site is one example of the approach. Below, two concept builds for fictional businesses show the fuller approach in more detail.</p>
 
     <div class="show-card">
         <div class="show-text">
-            <span class="tag">Concept design · not a real client</span>
+            <span class="tag">Concept build</span>
             <h3>Foldgate Farm &amp; Dark Sky Camp</h3>
-            <p>A dark-sky campsite in Weardale, built to show what a small rural business site could look like — booking form, farm story, photo gallery, the lot.</p>
+            <p>A dark-sky campsite concept in the North Pennines — booking form, farm story, photo gallery.</p>
             <div><a href="/foldgate-farm" class="btn btn-primary">View the concept →</a></div>
         </div>
         <div class="show-img" style="background-image:url('img/work/foldgate/hero.jpg');"></div>
@@ -154,29 +142,12 @@
 
     <div class="show-card">
         <div class="show-text">
-            <span class="tag">Concept design · not a real client</span>
+            <span class="tag">Concept build</span>
             <h3>Fettle &amp; Crumb</h3>
-            <p>An independent bakery &amp; coffee shop concept for Barnard Castle — full menu with its own popup, seasonal specials, testimonials, a catering enquiry and a map, built to show what a small food business site could look like.</p>
+            <p>An independent bakery &amp; coffee shop concept for Barnard Castle — full menu with its own daily popup, seasonal specials, testimonials, a catering enquiry form and a map.</p>
             <div><a href="/fettle-crumb" class="btn btn-primary">View the concept →</a></div>
         </div>
         <div class="show-img" style="background-image:url('img/work/fettle-crumb/croissants.jpg');"></div>
-    </div>
-
-    <div class="already">
-        <a href="/" class="ex">
-            <b>Build-3D</b>
-            <span>This site — company home, product and printing pages</span>
-            <span class="arrow">View →</span>
-        </a>
-        <a href="/rescuedb" class="ex">
-            <b>RescueDB</b>
-            <span>Product page for our animal-management system</span>
-            <span class="arrow">View →</span>
-        </a>
-    </div>
-    <div class="ph">
-        <svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h5M6 14h8"/></svg>
-        <span>Real client work coming soon</span>
     </div>
 </div></section>
 

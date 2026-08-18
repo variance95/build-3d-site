@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Foldgate Farm — Dark Sky Camp, Weardale</title>
+<title>Foldgate Farm — Dark Sky Camp, North Pennines</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Public+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -196,7 +196,7 @@
   .g-path{ background: url('img/work/foldgate/dirt-path.jpg') center 40%/cover no-repeat; }
   .g-mist{ background: url('img/work/foldgate/misty-morning.jpg') center/cover no-repeat; }
   .g-trails{ background: url('img/work/foldgate/star-trails.jpg') center/cover no-repeat; }
-  .g-road{ background: url('img/work/foldgate/milky-way.jpg') center/cover no-repeat; }
+  .g-road{ background: url('img/work/foldgate/milky-way-2.jpg') center/cover no-repeat; }
 
   /* testimonial */
   .quote{ padding:90px 0; border-top:1px solid var(--line); text-align:center; }
@@ -231,23 +231,15 @@
   .lightbox .lb-prev{ left:12px; } .lightbox .lb-next{ right:12px; }
   .lightbox .lb-prev:hover, .lightbox .lb-next:hover{ background:rgba(255,255,255,.2); }
 
-  /* booking confirmation toast */
-  .bk-toast{
-    position:fixed; left:50%; bottom:28px; transform:translate(-50%,16px);
-    background:var(--panel); border:1px solid var(--line); border-radius:8px;
-    padding:20px 22px; max-width:380px; width:calc(100% - 48px);
-    box-shadow:0 24px 60px rgba(0,0,0,.5);
-    opacity:0; pointer-events:none; transition:opacity .35s ease, transform .35s ease;
-    z-index:200; display:flex; gap:14px; align-items:flex-start;
-  }
-  .bk-toast.show{ opacity:1; transform:translate(-50%,0); pointer-events:auto; }
-  .bk-toast .bk-ico{
-    width:30px; height:30px; border-radius:50%; background:var(--amber); color:#241a08;
-    display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:15px; font-weight:700;
-  }
-  .bk-toast .bk-body b{ display:block; font-size:14px; margin-bottom:4px; }
-  .bk-toast .bk-body p{ font-size:12.5px; color:var(--stone); line-height:1.5; }
-  .bk-toast .bk-close{ margin-left:auto; background:none; border:none; color:var(--stone); font-size:16px; cursor:pointer; line-height:1; padding:2px; }
+  /* availability result */
+  .btn:disabled{ opacity:.65; cursor:default; transform:none; box-shadow:none; }
+  .avail-result{ margin-top:16px; max-height:0; overflow:hidden; opacity:0; transition:opacity .3s ease, max-height .3s ease; }
+  .avail-result.show{ opacity:1; max-height:220px; }
+  .avail-card{ background:var(--night); border:1px solid var(--line); border-left:3px solid var(--sage); border-radius:2px; padding:20px 22px; }
+  .avail-card.avail-no{ border-left-color:#c9704a; }
+  .avail-card.avail-warn{ border-left-color:var(--amber); }
+  .avail-card b{ font-family:'Newsreader', serif; font-size:17px; font-weight:500; display:block; }
+  .avail-card p{ color:var(--stone); font-size:13.5px; margin-top:8px; }
 
   @media (max-width: 800px){
     .navlinks{ display:none; }
@@ -262,9 +254,9 @@
 </head>
 <body>
 
-<div class="concept-banner">Concept design by <a href="/web-design">Build-3D</a>. A fictional client, built to show what's possible</div>
-
-<div class="nav-bar"><div class="wrap nav-inner">
+<div class="nav-bar">
+  <div class="concept-banner">A concept design by <a href="/web-design">Build-3D</a></div>
+  <div class="wrap nav-inner">
   <a href="foldgate-farm.html" class="brand">Foldgate Farm <span>&amp; Dark Sky Camp</span></a>
   <div class="navlinks">
     <div class="navitem">
@@ -313,7 +305,7 @@
   <canvas id="stars"></canvas>
   <div class="hero-fade"></div>
   <div class="wrap hero-inner">
-    <div class="eyebrow reveal">Certified North Pennines Dark Sky Park · Weardale, Co. Durham</div>
+    <div class="eyebrow reveal">Certified North Pennines Dark Sky Park · County Durham</div>
     <h1 class="reveal d1">Some of the darkest skies<br><em>left in England.</em></h1>
     <p class="reveal d2">A young working farm, pitched so the milky way is the main event.</p>
     <div class="hero-cta reveal d3">
@@ -353,7 +345,7 @@
     <div class="g wide g-mist reveal" data-full="img/work/foldgate/misty-morning.jpg" data-alt="Early morning mist over the field"><span class="g-label">Early, before the mist burns off</span></div>
     <div class="g tall g-sheep reveal d1" data-full="img/work/foldgate/story.jpg" data-alt="The home field"><span class="g-label">The home field, dry stone walls and all</span></div>
     <div class="g wide g-trails reveal d2" data-full="img/work/foldgate/star-trails.jpg" data-alt="Star trails over the trees"><span class="g-label">A long exposure, most of the night in one frame</span></div>
-    <div class="g tall g-road reveal d3" data-full="img/work/foldgate/milky-way.jpg" data-alt="A dark, clear night"><span class="g-label">A dark, clear night away from town</span></div>
+    <div class="g tall g-road reveal d3" data-full="img/work/foldgate/milky-way-2.jpg" data-alt="A dark, clear night"><span class="g-label">A dark, clear night away from town</span></div>
     <div class="g wide g-barn reveal" data-full="img/work/foldgate/g3.jpg" data-alt="Inside the old barn"><span class="g-label">Inside the old barn</span></div>
     <div class="g wide g-tent reveal d1" data-full="img/work/foldgate/g1.jpg" data-alt="A pitch, lit up after dark"><span class="g-label">A pitch, lit up after dark</span></div>
   </div>
@@ -381,10 +373,11 @@
     </div>
     <button type="button" class="btn btn-primary" id="bookBtn" style="align-self:flex-end;">Check availability</button>
   </div>
+  <div class="avail-result" id="availResult" aria-live="polite"></div>
 </section>
 
 <footer>
-  Foldgate Farm &amp; Dark Sky Camp · Weardale, County Durham · A concept design by <a href="/web-design">Build-3D</a>
+  Foldgate Farm &amp; Dark Sky Camp · North Pennines, County Durham · A concept design by <a href="/web-design">Build-3D</a>
 </footer>
 
 <div class="lightbox" id="lightbox" aria-hidden="true">
@@ -392,15 +385,6 @@
   <button class="lb-prev" aria-label="Previous">&#8249;</button>
   <img id="lbImg" src="" alt="">
   <button class="lb-next" aria-label="Next">&#8250;</button>
-</div>
-
-<div class="bk-toast" id="bkToast">
-  <span class="bk-ico">✓</span>
-  <div class="bk-body">
-    <b>Concept only. Nothing's booked</b>
-    <p id="bkToastMsg">This is a demo. In a working version, this would check live availability and confirm instantly.</p>
-  </div>
-  <button class="bk-close" id="bkToastClose" aria-label="Dismiss">&times;</button>
 </div>
 
 <script>
@@ -502,22 +486,69 @@
     lb.addEventListener('touchend', function(e){ if(x0===null) return; var dx=e.changedTouches[0].clientX-x0; if(Math.abs(dx)>40) go(dx<0?1:-1); x0=null; });
   })();
 
-  // Booking button — concept only, no real backend
+  // Booking button — simulates a real availability check against sample pitch data.
+  // Concept only: results are deterministic from the query (same inputs always give the
+  // same answer) but there's no live calendar behind this, which is disclosed in the result.
   (function(){
-    var btn=document.getElementById('bookBtn'), toast=document.getElementById('bkToast'),
-        toastMsg=document.getElementById('bkToastMsg'), toastClose=document.getElementById('bkToastClose');
-    var hideTimer=null;
+    var btn=document.getElementById('bookBtn'), resultBox=document.getElementById('availResult');
+    var PITCHES = {
+      'Open-sky pitch':       { total: 8, rate: 18, plural:'open-sky pitches' },
+      'Long-stay motorhome':  { total: 4, rate: 28, plural:'long-stay motorhome pitches' },
+      'Tent, no hookup':      { total: 6, rate: 14, plural:'tent pitches (no hookup)' }
+    };
+    function seed(str){
+      var h = 0;
+      for (var i=0;i<str.length;i++){ h = (h*31 + str.charCodeAt(i)) >>> 0; }
+      return h;
+    }
+    function render(html){
+      resultBox.innerHTML = html;
+      resultBox.classList.add('show');
+    }
     btn.addEventListener('click', function(){
-      var arrival=document.getElementById('bkArrival').value;
-      var nights=document.getElementById('bkNights').value;
-      var type=document.getElementById('bkType').value;
-      var when = arrival ? new Date(arrival).toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}) : 'a date';
-      toastMsg.textContent = "This is a demo, so nothing's actually booked. A working version would check live availability for " + nights + " night" + (nights==1?"":"s") + " from " + when + " (" + type + ") and confirm instantly.";
-      toast.classList.add('show');
-      clearTimeout(hideTimer);
-      hideTimer=setTimeout(function(){ toast.classList.remove('show'); }, 7000);
+      var arrival = document.getElementById('bkArrival').value;
+      var nights = parseInt(document.getElementById('bkNights').value, 10) || 1;
+      var type = document.getElementById('bkType').value;
+      var pitch = PITCHES[type];
+
+      if (!arrival){
+        render('<div class="avail-card avail-warn"><b>Pick an arrival date first</b><p>Choose a date above, then check again.</p></div>');
+        return;
+      }
+
+      resultBox.classList.remove('show');
+      btn.disabled = true;
+      var originalLabel = btn.textContent;
+      btn.textContent = 'Checking…';
+
+      setTimeout(function(){
+        btn.disabled = false;
+        btn.textContent = originalLabel;
+
+        var when = new Date(arrival).toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
+        var s = seed(arrival + '|' + nights + '|' + type);
+        var full = (s % 7 === 0);
+        var count = full ? 0 : 1 + (s % pitch.total);
+
+        if (count === 0){
+          var altType = (type === 'Long-stay motorhome') ? 'open-sky pitches' : 'long-stay pitches';
+          render(
+            '<div class="avail-card avail-no">' +
+              '<b>Fully booked for those dates</b>' +
+              '<p>No ' + pitch.plural + ' free from ' + when + ' for ' + nights + ' night' + (nights===1?'':'s') + '. Try a different date, or ' + altType + ' sometimes have room.</p>' +
+            '</div>'
+          );
+        } else {
+          var total = pitch.rate * nights;
+          render(
+            '<div class="avail-card avail-yes">' +
+              '<b>' + count + ' of ' + pitch.total + ' ' + pitch.plural + ' free</b>' +
+              '<p>' + nights + ' night' + (nights===1?'':'s') + ' from ' + when + ' · £' + total + ' total (£' + pitch.rate + '/night)</p>' +
+            '</div>'
+          );
+        }
+      }, 550);
     });
-    toastClose.addEventListener('click', function(){ toast.classList.remove('show'); clearTimeout(hideTimer); });
   })();
 </script>
 

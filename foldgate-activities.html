@@ -69,11 +69,34 @@
   .reveal.d1{ transition-delay:.08s; } .reveal.d2{ transition-delay:.16s; } .reveal.d3{ transition-delay:.24s; }
   @media (prefers-reduced-motion:reduce){ .reveal{ opacity:1; transform:none; transition:none; } }
 
-  .info-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--line); border:1px solid var(--line); }
-  @media (max-width:700px){ .info-grid{ grid-template-columns:1fr; } }
-  .info-card{ background:var(--panel); padding:26px 28px; }
-  .info-card b{ display:block; font-size:14.5px; margin-bottom:6px; }
-  .info-card span{ display:block; color:var(--stone); font-size:13px; }
+  /* a walking route around the site — each item as a waypoint stop */
+  .trail{ position:relative; max-width:880px; padding-left:4px; margin:44px 0; }
+  .trail::before{
+    content:''; position:absolute; top:6px; bottom:14px; left:27px; width:2px;
+    background-image:repeating-linear-gradient(to bottom, var(--amber) 0 5px, transparent 5px 13px);
+    opacity:.7;
+  }
+  .stop{ position:relative; display:flex; align-items:center; gap:16px; }
+  .stop + .stop{ margin-top:50px; }
+  .stop-marker{
+    position:absolute; left:0; top:-4px; width:52px; height:52px; border-radius:50%;
+    background:var(--night-2); border:2px solid var(--amber);
+    display:flex; align-items:center; justify-content:center; z-index:2;
+  }
+  .stop-marker svg{ width:23px; height:23px; stroke:var(--amber); fill:none; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; }
+  .stop-body{ flex:1; min-width:0; padding-left:70px; }
+  .stop-tag{ font-family:'JetBrains Mono', monospace; font-size:10.5px; letter-spacing:1.3px; text-transform:uppercase; color:var(--sage); margin-bottom:8px; margin-top:6px; }
+  .stop-photo{ flex-shrink:0; width:92px; height:92px; }
+  @media (min-width:680px){ .stop-photo{ width:220px; height:220px; } }
+  .stop-photo img{
+    width:100%; height:100%; object-fit:cover; display:block;
+    -webkit-mask-image: radial-gradient(circle, #000 60%, transparent 90%);
+    mask-image: radial-gradient(circle, #000 60%, transparent 90%);
+    filter: brightness(.85) saturate(.9);
+    opacity:.96;
+  }
+  .stop h3{ font-family:'Newsreader', serif; font-size:21px; font-weight:500; }
+  .stop p{ color:var(--stone); font-size:14.5px; line-height:1.6; margin-top:9px; max-width:420px; }
 
   .closing{ text-align:center; border-top:1px solid var(--line); background:var(--night-2); }
   .closing h2{ font-size:28px; }
@@ -88,9 +111,9 @@
 </head>
 <body>
 
-<div class="concept-banner">Concept design by <a href="/web-design">Build-3D</a>. A fictional client, built to show what's possible</div>
-
-<div class="nav-bar"><div class="wrap nav-inner">
+<div class="nav-bar">
+  <div class="concept-banner">A concept design by <a href="/web-design">Build-3D</a></div>
+  <div class="wrap nav-inner">
   <a href="foldgate-farm.html" class="brand">Foldgate Farm <span>&amp; Dark Sky Camp</span></a>
   <div class="navlinks">
     <div class="navitem">
@@ -142,11 +165,43 @@
 </div></header>
 
 <section class="wrap">
-  <div class="info-grid">
-    <div class="info-card reveal"><b>Help with lambing</b><span>Spring only, mornings — ask at the farmhouse.</span></div>
-    <div class="info-card reveal d1"><b>Farm walks</b><span>A marked route round the fields and the flock, an hour or so.</span></div>
-    <div class="info-card reveal d2"><b>Telescope loan</b><span>One good telescope, first come first served each evening.</span></div>
-    <div class="info-card reveal d3"><b>Fell walking</b><span>The path up onto the fell starts by the gate — routes on the noticeboard.</span></div>
+  <div class="trail">
+    <div class="stop reveal">
+      <span class="stop-marker"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></span>
+      <div class="stop-body">
+        <div class="stop-tag">At the farmhouse</div>
+        <h3>Help with lambing</h3>
+        <p>Spring only, mornings — bottle-feeding and pen-cleaning, mostly. Ask at the farmhouse, wellies useful.</p>
+      </div>
+      <span class="stop-photo"><img src="img/work/foldgate/lambs.jpg" alt="" loading="lazy"></span>
+    </div>
+    <div class="stop reveal">
+      <span class="stop-marker"><svg viewBox="0 0 24 24"><path d="M4 20l4-4 3 3 4-6 3 3 4-4"/></svg></span>
+      <div class="stop-body">
+        <div class="stop-tag">Round the fields</div>
+        <h3>Farm walks</h3>
+        <p>A marked route round the fields and the flock, gates and stiles waymarked, an hour or so at an easy pace.</p>
+      </div>
+      <span class="stop-photo"><img src="img/work/foldgate/misty-morning.jpg" alt="" loading="lazy"></span>
+    </div>
+    <div class="stop reveal">
+      <span class="stop-marker"><svg viewBox="0 0 24 24"><path d="M4 16l11-6 2 4-11 6z"/><path d="M15 10l2 4"/><circle cx="6.5" cy="18.5" r="1.8"/></svg></span>
+      <div class="stop-body">
+        <div class="stop-tag">At the barn</div>
+        <h3>Telescope loan</h3>
+        <p>One good telescope kept at the barn, first come first served each clear evening — ask and we'll show you how it works.</p>
+      </div>
+      <span class="stop-photo"><img src="img/work/foldgate/telescope.jpg" alt="" loading="lazy"></span>
+    </div>
+    <div class="stop reveal">
+      <span class="stop-marker"><svg viewBox="0 0 24 24"><path d="M3 19l6-11 4 7 2-3 6 7z"/></svg></span>
+      <div class="stop-body">
+        <div class="stop-tag">Up on the fell</div>
+        <h3>Fell walking</h3>
+        <p>The path up onto the fell starts by the gate, with a couple of loop options chalked up on the noticeboard.</p>
+      </div>
+      <span class="stop-photo"><img src="img/work/foldgate/dirt-path.jpg" alt="" loading="lazy"></span>
+    </div>
   </div>
 </section>
 
@@ -157,7 +212,7 @@
 </div></section>
 
 <footer>
-  Foldgate Farm &amp; Dark Sky Camp · Weardale, County Durham · A concept design by <a href="/web-design">Build-3D</a>
+  Foldgate Farm &amp; Dark Sky Camp · North Pennines, County Durham · A concept design by <a href="/web-design">Build-3D</a>
 </footer>
 
 <script>
