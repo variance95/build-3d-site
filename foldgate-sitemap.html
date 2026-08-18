@@ -75,7 +75,7 @@
   .section-head p{ color:var(--stone); margin-top:14px; font-size:14.5px; }
 
   .map-wrap{ background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:24px; }
-  .map-wrap svg{ width:100%; height:auto; display:block; border-radius:4px; }
+  .map-wrap img{ width:100%; height:auto; display:block; border-radius:4px; }
   .map-note{ margin-top:18px; font-size:13.5px; color:var(--stone); max-width:600px; }
   .directions{ margin-top:24px; display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line); }
   @media (max-width:700px){ .directions{ grid-template-columns:1fr; } }
@@ -151,86 +151,8 @@
 
 <section class="wrap">
   <div class="map-wrap reveal">
-    <svg viewBox="0 0 1100 680" xmlns="http://www.w3.org/2000/svg" font-family="JetBrains Mono, monospace" role="img" aria-label="Illustrated layout of Foldgate Farm showing the farmhouse, barn, facilities, pitches and dog field">
-      <rect x="0" y="0" width="1100" height="680" fill="#111a2e"/>
-      <defs>
-        <g id="ic-tent"><path d="M-6 5 L0 -6 L6 5 Z" fill="none" stroke="#c9974a" stroke-width="1.6" stroke-linejoin="round"/></g>
-        <g id="ic-pitch"><circle cx="0" cy="0" r="4.5" fill="none" stroke="#c9974a" stroke-width="1.6"/></g>
-        <g id="ic-camper"><rect x="-7" y="-4" width="14" height="8" rx="1.5" fill="none" stroke="#c9974a" stroke-width="1.6"/><circle cx="-3.5" cy="4" r="1.4" fill="#c9974a"/><circle cx="3.5" cy="4" r="1.4" fill="#c9974a"/></g>
-        <g id="ic-paw" fill="#8a9a72"><circle cx="0" cy="4" r="3.2"/><circle cx="-5" cy="-1" r="1.7"/><circle cx="5" cy="-1" r="1.7"/><circle cx="-2.6" cy="-4.6" r="1.4"/><circle cx="2.6" cy="-4.6" r="1.4"/></g>
-        <g id="ic-tree"><path d="M0 -9 L4.5 -1 L2 -1 L6 6 L-6 6 L-2 -1 L-4.5 -1 Z" fill="#8a9a72" opacity="0.55"/></g>
-      </defs>
-      <rect x="50" y="50" width="1000" height="560" rx="46" fill="#8a9a72" fill-opacity="0.04" stroke="#c9974a" stroke-opacity="0.55" stroke-width="2" stroke-dasharray="1 11" stroke-linecap="round"/>
-      <text x="270" y="110" text-anchor="middle" font-size="13" letter-spacing="2" fill="#8a9a72">TENT PITCHES</text>
-      <text x="800" y="110" text-anchor="middle" font-size="13" letter-spacing="2" fill="#8a9a72">OPEN-SKY PITCHES</text>
-      <use href="#ic-tent" x="150" y="160"/>
-      <use href="#ic-tent" x="240" y="130"/>
-      <use href="#ic-tent" x="330" y="180"/>
-      <use href="#ic-tent" x="180" y="250"/>
-      <use href="#ic-tent" x="280" y="290"/>
-      <use href="#ic-tent" x="390" y="240"/>
-      <use href="#ic-pitch" x="620" y="150"/>
-      <use href="#ic-pitch" x="710" y="125"/>
-      <use href="#ic-pitch" x="800" y="165"/>
-      <use href="#ic-pitch" x="900" y="140"/>
-      <use href="#ic-pitch" x="980" y="195"/>
-      <use href="#ic-pitch" x="650" y="235"/>
-      <use href="#ic-pitch" x="760" y="265"/>
-      <use href="#ic-pitch" x="870" y="285"/>
-      <path d="M960 130 C 1000 100, 1020 70, 1040 40" fill="none" stroke="#c9974a" stroke-width="2" stroke-dasharray="1 9" stroke-linecap="round"/>
-      <text x="1005" y="30" text-anchor="end" font-size="12" letter-spacing="0.5" fill="#c7c4b8">to the fell &#8594;</text>
-      <line x1="160" y1="430" x2="940" y2="430" stroke="#c9974a" stroke-width="2" stroke-dasharray="1 9" stroke-linecap="round" opacity="0.85"/>
-      <g>
-        <circle cx="160" cy="430" r="26" fill="#141d33" stroke="#c9974a" stroke-width="2"/>
-        <text x="160" y="476" text-anchor="middle" font-size="12.5" letter-spacing="0.4" fill="#f4f1e8">Farmhouse</text>
-      </g>
-      <g>
-        <circle cx="320" cy="430" r="26" fill="#141d33" stroke="#c9974a" stroke-width="2"/>
-        <text x="320" y="476" text-anchor="middle" font-size="12.5" letter-spacing="0.4" fill="#f4f1e8">Showers &amp; Toilets</text>
-      </g>
-      <g>
-        <circle cx="480" cy="430" r="26" fill="#141d33" stroke="#c9974a" stroke-width="2"/>
-        <text x="480" y="476" text-anchor="middle" font-size="12.5" letter-spacing="0.4" fill="#f4f1e8">Laundry</text>
-      </g>
-      <g>
-        <circle cx="620" cy="430" r="26" fill="#141d33" stroke="#c9974a" stroke-width="2"/>
-        <text x="620" y="476" text-anchor="middle" font-size="12.5" letter-spacing="0.4" fill="#f4f1e8">Fire Pit</text>
-      </g>
-      <g>
-        <circle cx="760" cy="430" r="26" fill="#141d33" stroke="#c9974a" stroke-width="2"/>
-        <text x="760" y="476" text-anchor="middle" font-size="12.5" letter-spacing="0.4" fill="#f4f1e8">Barn</text>
-        <text x="760" y="492" text-anchor="middle" font-size="10.5" letter-spacing="0.3" fill="#c7c4b8">wifi &amp; games</text>
-      </g>
-      <g>
-        <circle cx="920" cy="430" r="26" fill="#141d33" stroke="#c9974a" stroke-width="2"/>
-        <text x="920" y="476" text-anchor="middle" font-size="12.5" letter-spacing="0.4" fill="#f4f1e8">Farm Shop</text>
-        <text x="920" y="492" text-anchor="middle" font-size="10.5" letter-spacing="0.3" fill="#c7c4b8">old dairy</text>
-      </g>
-      <text x="760" y="518" text-anchor="middle" font-size="11" letter-spacing="1.6" fill="#8a9a72">LONG-STAY (HOOKUP)</text>
-      <use href="#ic-camper" x="720" y="545"/>
-      <use href="#ic-camper" x="800" y="545"/>
-      <use href="#ic-camper" x="720" y="577"/>
-      <use href="#ic-camper" x="800" y="577"/>
-      <path d="M320 430 L300 320" fill="none" stroke="#c9974a" stroke-width="1.6" stroke-dasharray="1 9" opacity="0.7"/>
-      <path d="M760 430 L740 320" fill="none" stroke="#c9974a" stroke-width="1.6" stroke-dasharray="1 9" opacity="0.7"/>
-      <path d="M500 430 L500 590" fill="none" stroke="#c9974a" stroke-width="2" stroke-dasharray="1 9" stroke-linecap="round"/>
-      <circle cx="500" cy="590" r="9" fill="#111a2e" stroke="#c9974a" stroke-width="2"/>
-      <text x="500" y="618" text-anchor="middle" font-size="12" letter-spacing="0.5" fill="#f4f1e8">Gate</text>
-      <path d="M500 599 L500 650" fill="none" stroke="#c7c4b8" stroke-width="2" stroke-dasharray="1 8" opacity="0.6"/>
-      <text x="500" y="668" text-anchor="middle" font-size="11" letter-spacing="1" fill="#c7c4b8">main dale road</text>
-      <rect x="100" y="490" width="280" height="102" rx="14" fill="none" stroke="#8a9a72" stroke-width="1.8" stroke-dasharray="6 6" opacity="0.8"/>
-      <use href="#ic-paw" x="240" y="530"/>
-      <text x="240" y="562" text-anchor="middle" font-size="13" letter-spacing="0.4" fill="#f4f1e8">Dog Walking Field</text>
-      <text x="240" y="579" text-anchor="middle" font-size="11" fill="#c7c4b8">fenced, off the working land</text>
-      <use href="#ic-tree" x="90" y="90"/>
-      <use href="#ic-tree" x="1000" y="90"/>
-      <use href="#ic-tree" x="90" y="600"/>
-      <use href="#ic-tree" x="1000" y="600"/>
-      <use href="#ic-tree" x="550" y="90"/>
-      <g><circle cx="1010" cy="560" r="22" fill="#141d33" stroke="rgba(244,241,232,0.25)" stroke-width="1"/><path d="M1010 546 L1005 566 L1010 562 L1015 566 Z" fill="#c9974a"/><text x="1010" y="534" text-anchor="middle" font-size="11" fill="#c7c4b8">N</text></g>
-      <text x="60" y="655" font-size="10.5" fill="#c7c4b8" opacity="0.7">Illustrative layout, not to scale</text>
-    </svg>
-    <p class="map-note">A rough layout of the site — where the pitches, facilities and dog field sit, and the walk between them. Full directions and the postcode for satnav are sent with your booking confirmation.</p>
+    <img src="img/work/foldgate/site-layout.jpg" alt="Illustrated layout of Foldgate Farm — the working farm and farmhouse, the welcome hub (reception, wifi barn, facilities block), the main campsite with hardstanding and grass pitches around a central firepit, a stream and wooden bridge, and the Dark Sky Reserve's stargazing-only pitches beyond it" loading="lazy">
+    <p class="map-note">A first look at how it all sits — the farm buildings, the main campsite, and the Dark Sky Reserve across the stream. Full directions and the postcode for satnav are sent with your booking confirmation.</p>
   </div>
 
   <div class="directions">
