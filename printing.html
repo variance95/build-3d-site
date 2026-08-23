@@ -56,16 +56,24 @@
     .intro p{font-size:1.1rem;color:#3a4b42}
     .intro p+p{margin-top:14px}
 
+    /* category headers */
+    .cat-head{margin:64px 0 28px;max-width:680px;scroll-margin-top:90px}
+    .cat-head:first-of-type{margin-top:0}
+    .cat-head .tag{display:inline-block;background:var(--sage-card);color:var(--green-600);font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;border-radius:20px;margin-bottom:14px}
+    .cat-head h2{font-size:clamp(1.5rem,3vw,2rem);font-weight:600}
+    .cat-head p{color:var(--muted);margin-top:12px}
+    .how-it-works{margin-top:22px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    @media (max-width:700px){.how-it-works{grid-template-columns:1fr}}
+    .how-it-works div{background:var(--white);border:1px solid var(--rim);border-radius:12px;padding:20px}
+    .how-it-works .step-num{font-family:'Lora',serif;font-weight:700;color:var(--green-600);font-size:1.1rem}
+    .how-it-works p{color:var(--muted);font-size:.92rem;margin-top:6px}
+
     /* product rows */
     .prow{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-top:18px}
-    .squiggle{margin:48px 0;line-height:0}
-    .squiggle+.prow{margin-top:0}
-    .squiggle svg{width:100%;height:auto;display:block;overflow:visible}
-    .squiggle path{stroke:var(--green-500);stroke-width:2.5;fill:none;stroke-linecap:round;opacity:.55}
     .prow.rev .prow-media{order:-1}
     @media (max-width:780px){.prow{grid-template-columns:1fr;gap:26px}.prow.rev .prow-media{order:0}}
     .prow-text .tag{display:inline-block;background:var(--sage-card);color:var(--green-600);font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;border-radius:20px;margin-bottom:14px}
-    .prow-text h2{font-size:clamp(1.5rem,3vw,2rem);font-weight:600}
+    .prow-text h3{font-size:clamp(1.5rem,3vw,2rem);font-weight:600}
     .prow-text p{color:var(--muted);margin-top:12px}
     .prow-text .actions{margin-top:22px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
 
@@ -139,11 +147,18 @@
         <p>Everything here was designed in-house and printed to order. Some pieces are practical — made to solve a specific problem — and some are just lovely things to have. A few are listed on <strong>Etsy</strong>; the rest we make on request.</p>
     </div>
 
+    <!-- CUSTOM & ONE-OFF PRINTS -->
+    <div class="cat-head" id="custom">
+        <span class="tag">Category</span>
+        <h2>Custom &amp; one-off prints</h2>
+        <p>Bespoke objects designed around a specific need, not pulled from a catalogue — a tool that doesn't have an off-the-shelf holder, a personalised gift, a piece that only makes sense for your setup. Two things we've made:</p>
+    </div>
+
     <!-- HALO -->
     <div class="prow">
         <div class="prow-text">
             <span class="tag">For rescues &amp; vets</span>
-            <h2>Halo reader holder</h2>
+            <h3>Halo reader holder</h3>
             <p>A purpose-made holder for the Halo microchip reader — it keeps the reader secure, charged and to hand where staff need it, instead of going missing in a drawer. Printable plain, or branded to your organisation.</p>
             <div class="actions">
                 <!-- TODO: replace href with the Etsy listing URL, swap .etsy-soon for the .btn-etsy below -->
@@ -158,29 +173,11 @@
         </div></div>
     </div>
 
-    <div class="squiggle" aria-hidden="true"><svg viewBox="0 0 1200 56"><path d="M2 28 C 140 4 230 4 340 27 C 450 50 560 51 670 28 C 770 7 870 6 980 28 C 1080 48 1130 47 1198 29"/></svg></div>
-
-    <!-- NAME PLATE -->
-    <div class="prow rev">
-        <div class="prow-text">
-            <span class="tag">For rescues · works with RescueDB</span>
-            <h2>The Universal Name Plate</h2>
-            <p>A modular, cage-mounted holder for a printed 6×4″ card — the animal's name, photo, medical flags and care notes, at a glance on the front of every pen. It's built into RescueDB too: export any animal and out comes a print-ready 6×4 that slots straight in. They're screw on, rearrangeable, and printed to fit your cages.</p>
-            <div class="actions">
-                <span class="etsy-soon"><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg> Etsy listing coming soon</span>
-                <a href="/contact" class="btn btn-primary">Enquire →</a>
-            </div>
-        </div>
-        <div class="prow-media"><div class="ph"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h5M6 14h8"/></svg><span>Photos coming soon</span></div></div>
-    </div>
-
-    <div class="squiggle" aria-hidden="true"><svg viewBox="0 0 1200 56"><path d="M2 28 C 120 48 230 49 340 28 C 440 8 560 7 670 28 C 770 50 880 51 980 27 C 1070 6 1130 6 1198 27"/></svg></div>
-
     <!-- LANTERN -->
-    <div class="prow">
+    <div class="prow rev" style="margin-top:56px">
         <div class="prow-text">
             <span class="tag">Creative</span>
-            <h2>Lithophane lantern</h2>
+            <h3>Lithophane lantern</h3>
             <p>A backlit lithophane lantern wrapped in your favourite book covers (or anything you like) — flat and plain in daylight, glowing into life the moment it's lit. Each one's made to a design you choose; a lovely gift, and a proper showcase of what the printer can do.</p>
             <div class="actions">
                 <a href="https://www.etsy.com/uk/listing/4525209731/litho-book-lantern" class="btn btn-etsy" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg> Buy on Etsy</a>
@@ -192,6 +189,40 @@
             <img class="c2" src="img/prints/lantern-2.jpg" alt="Lithophane lantern from another angle">
             <img class="c3" src="img/prints/lantern.webp" alt="Lithophane lantern, lit and glowing">
         </div></div>
+    </div>
+
+    <!-- REPLACEMENT & SPARE PARTS -->
+    <div class="cat-head" id="parts">
+        <span class="tag">Category</span>
+        <h2>Replacement &amp; spare parts</h2>
+        <p>The bracket that's cracked, the knob that's gone missing, the part for something no longer sold — if you can send the broken original, a photo, or rough measurements, we can usually recreate it. Most jobs like this are a single part, printed to fit, without waiting on a manufacturer who's stopped making it.</p>
+    </div>
+    <div class="how-it-works">
+        <div><div class="step-num">01</div><p>Send us the broken part, or a photo and rough dimensions.</p></div>
+        <div><div class="step-num">02</div><p>We model it and print a test fit to check before committing to the final piece.</p></div>
+        <div><div class="step-num">03</div><p>Once it's right, we print the finished part — usually just the one.</p></div>
+    </div>
+    <div class="actions" style="margin-top:24px"><a href="/contact" class="btn btn-primary">Describe what's broken →</a></div>
+
+    <!-- PROTOTYPES & SMALL RUNS -->
+    <div class="cat-head" id="prototypes">
+        <span class="tag">Category</span>
+        <h2>Prototypes &amp; small runs</h2>
+        <p>Iterate a design over a few test prints, then print a proper batch once it's right — cage tags for a whole shelter, a fixture for every van in a fleet, ten of something instead of one. One thing we've built this way:</p>
+    </div>
+
+    <!-- NAME PLATE -->
+    <div class="prow">
+        <div class="prow-text">
+            <span class="tag">For rescues · works with RescueDB</span>
+            <h3>The Universal Name Plate</h3>
+            <p>A modular, cage-mounted holder for a printed 6×4″ card — the animal's name, photo, medical flags and care notes, at a glance on the front of every pen. It's built into RescueDB too: export any animal and out comes a print-ready 6×4 that slots straight in. They're screw on, rearrangeable, and printed as a batch sized to your cages.</p>
+            <div class="actions">
+                <span class="etsy-soon"><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg> Etsy listing coming soon</span>
+                <a href="/contact" class="btn btn-primary">Enquire →</a>
+            </div>
+        </div>
+        <div class="prow-media"><div class="ph"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h5M6 14h8"/></svg><span>Photos coming soon</span></div></div>
     </div>
 </div></section>
 
