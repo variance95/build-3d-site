@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Web Design — Build-3D</title>
-<meta name="description" content="Bespoke web design by Build-3D — custom websites and product pages, shaped around your brand. No templates, no page-builder bloat.">
+<meta name="description" content="Web design by Build-3D — custom websites and product pages, built from scratch. No page builders.">
 <meta property="og:title" content="Web Design — Build-3D">
-<meta property="og:description" content="Custom websites and product pages, made to fit your brand — not a template.">
+<meta property="og:description" content="Custom websites and product pages, built from scratch.">
 <meta property="og:type" content="website">
 <link rel="icon" type="image/png" href="img/favicon-64.png">
 <link rel="apple-touch-icon" href="img/logo-160.png">
@@ -47,22 +47,14 @@
     .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(225,115,59,.44)}
     .btn-ghost{background:rgba(255,255,255,.10);color:#fff;border:1px solid rgba(255,255,255,.28)}
     .btn-ghost:hover{background:rgba(255,255,255,.18)}
+    .hero-wave{position:absolute;left:0;bottom:-1px;width:100%;height:70px;z-index:2;display:block}
+    @media (max-width:700px){.hero-wave{height:40px}}
 
     section{padding:64px 0}
     .intro{max-width:720px}
     .intro p{font-size:1.1rem;color:#3a4b42}
     .intro p+p{margin-top:14px}
     h2{font-size:clamp(1.6rem,3.4vw,2.1rem);font-weight:600}
-
-    /* category sections */
-    .cat-head{margin:64px 0 20px;max-width:680px;scroll-margin-top:80px}
-    .cat-head:first-of-type{margin-top:0}
-    .cat-head .ico{width:46px;height:46px;border-radius:11px;background:var(--green-700);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
-    .cat-head .ico svg{width:23px;height:23px;stroke:#fff;fill:none;stroke-width:1.8}
-    .cat-head h3{font-size:1.4rem;font-weight:600;margin-bottom:10px}
-    .cat-head p{color:var(--muted)}
-    .includes{margin-top:18px;display:flex;flex-wrap:wrap;gap:10px}
-    .includes span{background:var(--sage-card);color:var(--green-600);font-size:.85rem;font-weight:600;padding:7px 14px;border-radius:20px}
 
     /* concept showcase */
     .show-card{display:grid;grid-template-columns:1.05fr 1fr;gap:0;border:1px solid var(--rim);border-radius:18px;overflow:hidden;background:var(--white);margin-top:34px}
@@ -81,6 +73,12 @@
     footer{text-align:center;padding:44px 24px;color:var(--muted);font-size:.86rem;border-top:1px solid var(--sage-line)}
     footer img{height:42px;width:auto;margin:0 auto 12px;opacity:.85}
     footer a{color:var(--green-600);text-decoration:none}
+
+    /* reveal on scroll */
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+    .reveal.in{opacity:1;transform:none}
+    .reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}
+    @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 </style>
 </head>
 <body>
@@ -88,9 +86,9 @@
 <nav class="nav"><div class="wrap">
     <a href="/" class="brand"><img src="img/logo-light-160.png" alt="Build-3D"></a>
     <div class="links">
-        <a href="/#software">Software</a>
-        <a href="/printing">3D Printing</a>
         <a href="/web-design" class="active">Web Design</a>
+        <a href="/rescuedb">Software</a>
+        <a href="/printing">3D Printing</a>
         <a href="/faq">FAQ</a>
         <a href="/contact">Contact</a>
     </div>
@@ -99,41 +97,26 @@
 <header class="head"><div class="wrap">
     <div class="eyebrow">Build-3D — Bespoke Creativity</div>
     <h1>Websites, made to fit</h1>
-    <p>No page builders, no templates — every site is custom-built around your brand, from a single landing page to a full product site. You're looking at one right now.</p>
+    <p>No page builders — every site is built from scratch, from a single landing page to a full product site.</p>
     <div class="cta"><a href="/contact" class="btn btn-primary">Discuss a website →</a></div>
-</div></header>
+</div>
+<svg class="hero-wave" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,56 C240,88 480,24 720,44 C960,64 1200,96 1440,56 L1440,120 L0,120 Z" fill="var(--sage-bg)"></path>
+</svg>
+</header>
 
 <section><div class="wrap">
-    <div class="intro">
-        <p>A website only works if it says what you do and loads fast — a lot of them don't, because they're built on a stack of plugins and a theme nobody really chose. We build from scratch in plain HTML, CSS and a little JavaScript, so there's nothing extra weighing the page down and nothing to untangle later when something needs to change.</p>
-        <p>Whether that's a simple one-pager that explains the business and gets people in touch, or something with more moving parts — bookings, a menu, a shop — the site does the job you actually need, not the job a template assumes you need.</p>
-    </div>
-
-    <div class="cat-head" id="business">
-        <span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18"/></svg></span>
-        <h3>Business &amp; product sites</h3>
-        <p>A site that explains what you do clearly enough that someone understands it in a few seconds, and makes it obvious what to do next. Usually a home page, an about or story page, what you offer, and a contact method that actually gets used — built around your own structure, not a template's.</p>
-        <div class="includes"><span>Home</span><span>About / story</span><span>Services or products</span><span>Contact form</span><span>Gallery, if it helps</span></div>
-    </div>
-
-    <div class="cat-head" id="landing">
-        <span class="ico"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8"/></svg></span>
-        <h3>Landing pages</h3>
-        <p>One page, one job — a launch, a single product, an event, a limited-time offer. No navigation to get lost in, just the case for the one thing you want someone to do: book, buy, sign up, or get in touch. Quicker to build and quicker to launch than a full site, and easy to retire once the campaign's done.</p>
-    </div>
-
-    <div class="cat-head" id="rebuilds">
-        <span class="ico"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-6.2-8.56M21 3v6h-6"/></svg></span>
-        <h3>Refreshes &amp; rebuilds</h3>
-        <p>Replacing a dated, slow, or hard-to-update site without starting from zero. We keep what the old one got right — the copy, the structure, what people actually land on it looking for — and rebuild the parts that don't: usually the speed, the mobile experience, or how easy it is to change something yourself afterwards.</p>
+    <div class="intro reveal">
+        <p>A website only works if it says what you do and loads fast — a lot of them don't, because they're built on a stack of plugins and a theme nobody really chose. This one's plain HTML, CSS and a little JavaScript, so there's nothing extra weighing the page down and nothing to untangle later when something needs to change.</p>
+        <p>Could be a simple one-pager that explains the business and gets people in touch, or something with more moving parts — bookings, a menu, a shop. Whatever it is, it's built around what you actually need.</p>
     </div>
 </div></section>
 
 <section style="padding-top:0"><div class="wrap">
-    <h2>A look at the work</h2>
-    <p style="color:var(--muted);max-width:640px;margin-top:10px;">This site is one example of the approach. Below, two concept builds for fictional businesses show the fuller approach in more detail.</p>
+    <h2 class="reveal">A look at the work</h2>
+    <p class="reveal" style="color:var(--muted);max-width:640px;margin-top:10px;">This site is one example of the approach. Below, two concept builds for fictional businesses show the fuller approach in more detail.</p>
 
-    <div class="show-card">
+    <div class="show-card reveal">
         <div class="show-text">
             <span class="tag">Concept build</span>
             <h3>Foldgate Farm &amp; Dark Sky Camp</h3>
@@ -143,7 +126,7 @@
         <div class="show-img" style="background-image:url('img/work/foldgate/hero.jpg');"></div>
     </div>
 
-    <div class="show-card">
+    <div class="show-card reveal">
         <div class="show-text">
             <span class="tag">Concept build</span>
             <h3>Fettle &amp; Crumb</h3>
@@ -155,7 +138,7 @@
 </div></section>
 
 <section style="padding-top:0"><div class="wrap">
-    <div class="band">
+    <div class="band reveal">
         <h2>Got a website in mind?</h2>
         <p>A brand new site, or a tired one that needs replacing — tell us what you're after and we'll take it from there.</p>
         <div class="actions">
@@ -168,12 +151,19 @@
 <footer>
     <img src="img/logo-dark-160.png" alt="Build-3D">
     <div style="font-family:'Lora',serif;font-style:italic;color:var(--green-600);margin-bottom:8px;">Bespoke Creativity</div>
-    © <span id="yr"></span> Build-3D · Bespoke software, 3D printing &amp; web design<br>
+    © <span id="yr"></span> Build-3D · Websites, software &amp; 3D printing<br>
     <a href="mailto:james@build-3d.com">james@build-3d.com</a>
 </footer>
 
 <script>
 document.getElementById('yr').textContent=new Date().getFullYear();
+// Reveal on scroll
+(function(){
+    var io = new IntersectionObserver(function(es){
+        es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    },{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+})();
 </script>
 </body>
 </html>
